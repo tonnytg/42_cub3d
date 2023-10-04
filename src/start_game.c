@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arguments.c                                        :+:      :+:    :+:   */
+/*   start_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/04 04:49:35 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/04 04:57:09 by antthoma         ###   ########.fr       */
+/*   Created: 2023/10/04 04:53:48 by antthoma          #+#    #+#             */
+/*   Updated: 2023/10/04 04:57:59 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	is_invalid_arguments(int argc, char *argv[])
+int	start_game(t_game *game)
 {
-	if (argc <= 1)
-	{
-		return (1);
-	}
-	if (argv == NULL)
-	{
-		return (1);
-	}
-	return (0);
-}
-
-int	is_invalid_map(int argc, char *argv[])
-{
-	printf("check map %d %s\n", argc, argv);
+	printf("start game!\n");
 }
