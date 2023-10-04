@@ -6,13 +6,13 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:23 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/04 04:58:21 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/04 05:00:15 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/cub3d.h"
 
-int	main(int argc, char *argv[])
+int	main(int argc, char **argv)
 {
 	t_game	*game;
 
