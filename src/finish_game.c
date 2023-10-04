@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:54:42 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/04 05:01:12 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/04 05:09:40 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 int	finish_game(t_game *game)
 {
 	printf("finish game!\n");
-	return (0);	
+	return (0);
 }
