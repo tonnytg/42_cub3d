@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:23 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/08 05:36:45 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/08 17:33:10 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 	if (is_invalid_map_file(argc, argv))
 		return (1);
 	game = ft_calloc(1, sizeof(t_game));
-	load_game(game, argc, argv);
+	load_game(game, argv);
 	start_game(game);
 	finish_game(game);
 	return (0);

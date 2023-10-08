@@ -6,31 +6,25 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:55:00 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/08 05:46:28 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/08 17:55:29 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 #include <fcntl.h>
 
-int	read_map(t_game *game)
+int	init_game_struct(t_game *game)
 {
-	char	buffer[1024];
-	ssize_t	bytes_read;
-
-	while ((bytes_read = read(game->map->fd, buffer, sizeof(buffer))) > 0)
-	{
-        // TODO: Realizar a leitura do arquivo
-		// e salvar em uma estrutura que faça sentido.
-    }	
+	game->map = ft_calloc(1, sizeof(t_map));
+	if (game->map == NULL)
+		return (1);
 	return (0);
 }
 
-t_game	*load_game(t_game *game, int argc, char **argv)
+t_game	*load_game(t_game *game, char **argv)
 {
-	printf("load game %d %s - game: %p\n", argc, argv[0], game);
-	game->map->fd = open(argv[1], O_RDONLY);
-	if (game->map->fd < 0)
+	init_game_struct(game);
+	if (open_file(game, argv))
 	{
 		printf("ERROR: can't open file map!");
 		return (NULL);	

@@ -6,24 +6,27 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 00:12:15 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/08 05:07:16 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/08 17:51:09 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <string.h>
+#include <errno.h>
 
-t_bool	load_map(char *map_path, t_strc *strc)
+
+int	open_file(t_game *game, char **argv)
 {
-	int	int_path;
-
-	int_path = open(map_path, O_RDONLY);
-	if (int_path < 0)
-		exit_map_error(&strc->map, "Cannot open the map file", NULL, 0);
-	map_data(&strc->map, &strc->player, &int_path);
-	return (TRUE);
-}
-
-int	open_file(game, argv)
-{
+	printf("file map: %s\n", argv[1]);
 	game->map->fd = open(argv[1], O_RDONLY);
+	if (game->map->fd < 0)
+	{
+		printf("ERROR: can't open file map!");
+		return (1);	
+	}
+	return (0);
 }

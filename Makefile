@@ -2,6 +2,8 @@ NAME 	= "cub3D"
 HEADER	= includes/$(NAME).h
 FILES	=	main.c					\
 			src/check_file_map.c	\
+			src/file/file.c			\
+			src/map/map.c			\
 			src/load_game.c			\
 			src/finish_game.c		\
 			src/start_game.c
