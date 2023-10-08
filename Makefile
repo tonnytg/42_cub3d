@@ -1,9 +1,9 @@
 NAME 	= "cub3D"
 HEADER	= includes/$(NAME).h
-FILES	=	main.c				\
-			src/arguments.c		\
-			src/settings.c		\
-			src/finish_game.c	\
+FILES	=	main.c					\
+			src/check_file_map.c	\
+			src/load_game.c			\
+			src/finish_game.c		\
 			src/start_game.c
 OBJS	= $(FILES:.c=.o)
 CC		= gcc
