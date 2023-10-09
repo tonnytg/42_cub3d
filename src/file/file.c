@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   file.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 00:12:15 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/08 17:51:09 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:03:16 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3D.h"
+#include <cub3D.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
