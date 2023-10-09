@@ -6,19 +6,17 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:35 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/08 05:37:09 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/09 18:48:11 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3D.h"
+#include "../../includes/cub3D.h"
 
 int	is_invalid_arguments(int argc, char **argv)
 {
-	printf("%s - %d\n", argv[1], argc);
 	if (argc != 2
 		|| (argv[1] == NULL))
 	{
-		printf("1\n");
 		return (1);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:38:54 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/08 17:38:46 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/09 04:58:54 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,49 +14,45 @@
 
 int	read_map(t_game *game)
 {
-    char	buffer[1024];
-    char	line[MAX_LINE_SIZE];
-    size_t	line_size = 0;
-    ssize_t	bytes_read;
+	char	buffer[1024];
+	char	line[MAX_LINE_SIZE];
+	size_t	line_size;
+	ssize_t	bytes_read;
 	ssize_t	i;
 
-	while ((bytes_read = read(game->map->fd, buffer, sizeof(buffer))) > 0)
+	line_size = 0;
+	bytes_read = read(game->map->fd, buffer, sizeof(buffer));
+	while (bytes_read > 0)
 	{
-        // TODO: Realizar a leitura do arquivo
-		// e salvar em uma estrutura que faça sentido.
 		i = 0;
 		while (i < bytes_read)
-        {
-			if (buffer[i] == '\n')
-            {
-				// Processar a linha lida
-				line[line_size] = '\0'; // Adicionar terminador nulo
-				printf("Linha lida: %s\n", line);
+		{
+			if (buffer[i] == '\n' || buffer[i] == '\0')
+			{
+				line[line_size] = '\0';
+				printf("Linha lida 1: %s\n", line);
 				line_size = 0;
 			}
-            else if (line_size < MAX_LINE_SIZE - 1)
-            {
-                // Adicionar o caractere ao buffer da linha, se houver espaço
-                line[line_size++] = buffer[i];
-            }
-            else
-            {
-                // A linha é muito longa, trate esse erro adequadamente
-                fprintf(stderr, "Erro: linha muito longa\n");
-                exit(1);
-            }
+			else
+				line[line_size++] = buffer[i];
+			i++;
 		}
-    }
-    if (bytes_read == -1)
-    {
-        perror("Erro na leitura do arquivo");
-        exit(1);
-    }
-    if (line_size > 0)
-    {
-        // Processar a última linha, se houver alguma
-        line[line_size] = '\0'; // Adicionar terminador nulo
-        printf("Linha lida: %s\n", line);
-    }		
+		if (buffer[bytes_read - 1] == '\n')
+		{
+			printf("end of line\n");
+			break ;
+		}
+		bytes_read = read(game->map->fd, buffer, sizeof(buffer));
+	}
+	if (bytes_read == -1)
+	{
+		perror("Erro na leitura do arquivo");
+		exit(1);
+	}
+	if (line_size > 0)
+	{
+		line[line_size] = '\0';
+		printf("Linha lida 2: %s\n", line);
+	}
 	return (0);
 }

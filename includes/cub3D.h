@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/08 17:37:39 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/09 18:57:43 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,25 @@
 # define CUB3D_H
 
 # include "../libs/libft/libft.h"
+# include <mlx.h>
 # include <stdio.h>
 # include <fcntl.h>
 
 #define MAX_LINE_SIZE 1024
+#define PIXEL_SIZE 32
+#define BUFFER_SIZE 42
+
+typedef struct s_engine
+{
+	void	*mlx;
+	void	*window;
+	int		width;
+	int		height;
+	int		screen_width;
+	int		screen_height;
+	int		count_columns;
+	int		count_lines;	
+}	t_engine;
 
 typedef struct s_map
 {
@@ -26,8 +41,9 @@ typedef struct s_map
 
 typedef struct s_game
 {
-	int		id;
-	t_map	*map;
+	t_map		*map;
+	t_engine	*engine;
+	int			id;	
 }	t_game;
 
 /* Read Map */
