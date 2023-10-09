@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:38:54 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/09 04:58:54 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/09 20:32:44 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	read_map(t_game *game)
 			if (buffer[i] == '\n' || buffer[i] == '\0')
 			{
 				line[line_size] = '\0';
-				printf("Linha lida 1: %s\n", line);
+				printf("%s\n", line);
 				line_size = 0;
 			}
 			else
@@ -52,7 +52,7 @@ int	read_map(t_game *game)
 	if (line_size > 0)
 	{
 		line[line_size] = '\0';
-		printf("Linha lida 2: %s\n", line);
+		printf("%s\n", line);
 	}
 	return (0);
 }
