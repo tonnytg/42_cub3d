@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   finish_game.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:54:42 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/08 17:54:52 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:01:44 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3D.h"
+#include <cub3D.h>
 
 t_game	*finish_game(t_game *game)
 {
