@@ -6,11 +6,11 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:35 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/09 18:48:11 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/09 23:48:05 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3D.h"
+#include <cub3D.h>
 
 int	is_invalid_arguments(int argc, char **argv)
 {

@@ -6,11 +6,11 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:23 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/09 18:47:14 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/09 23:50:50 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub3D.h"
+#include <cub3D.h>
 
 int	main(int argc, char **argv)
 {

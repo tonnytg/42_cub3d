@@ -6,15 +6,15 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/09 20:04:51 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/09 23:51:59 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "../libs/libft/libft.h"
 # include <mlx.h>
+# include <libft.h>
 # include <stdio.h>
 # include <fcntl.h>
 

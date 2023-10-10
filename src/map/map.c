@@ -6,11 +6,11 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:38:54 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/09 20:32:44 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/09 23:50:02 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3D.h"
+#include <cub3D.h>
 
 int	read_map(t_game *game)
 {
