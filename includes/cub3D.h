@@ -30,8 +30,6 @@ typedef struct s_engine
 	int		height;
 	int		screen_width;
 	int		screen_height;
-	int		count_columns;
-	int		count_lines;	
 }	t_engine;
 
 typedef struct s_map
