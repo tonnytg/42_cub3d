@@ -97,11 +97,12 @@ t_game *set_value_to_map(t_game *game, int line_number, char *line)
 	i = 0;
 	while (line[i] != '\0')
 	{
-		printf("value line[i]: %c", line[i]);
+		printf("%c", line[i]);
 		game->map->grid[line_number][i] = line[i];
 		i++;
 	}
-	printf("grid[%d]: %s\n", line_number, game->map->grid[line_number]);
+	printf("\n");
+	// printf("grid[%d]: %s\n", line_number, game->map->grid[line_number]);
 	return (game);
 }
 
@@ -125,6 +126,7 @@ int	read_map(t_game *game)
 			if (buffer[i] == '\n' || buffer[i] == '\0')
 			{
 				line[line_size] = '\0';
+				// printf("call line: %d\n", line_number);
 				set_value_to_map(game, line_number, line);
 				line_size = 0;
 				line_number++;
