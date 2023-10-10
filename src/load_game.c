@@ -32,6 +32,14 @@ t_game	*load_game(t_game *game, char **argv)
 		printf("ERROR: can't open file map!");
 		return (NULL);
 	}
+	if (get_size_map(game))
+	{
+		printf("ERROR: can't read map inside file or invalid content!\n");
+		return (NULL);
+	}
+	printf("line: %d\n", game->map->lines);
+	printf("columns: %d\n", game->map->columns);
+	create_map(game);
 	if (read_map(game))
 	{
 		printf("ERROR: can't read map inside file or invalid content!\n");

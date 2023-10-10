@@ -47,7 +47,10 @@ typedef struct s_engine
 
 typedef struct s_map
 {
-	int	fd;
+	char	**grid;
+	int		fd;
+	int		lines;
+	int		columns;
 }	t_map;
 
 typedef struct s_game
@@ -63,6 +66,8 @@ int		is_invalid_map_file(int argc, char **argv);
 int		is_invalid_arguments(int argc, char **argv);
 int		is_invalid_map(int argc, char **argv);
 int		read_map(t_game *game);
+int		get_size_map(t_game *game);
+t_game	*create_map(t_game *game);
 
 /* Core */
 t_game	*load_game(t_game *game, char **argv);
@@ -73,6 +78,7 @@ t_game	*finish_game(t_game *game);
 int		key_press(int keycode, t_game *game);
 
 /* Clean or Exit */
+t_game	*clean_map(t_game *game);
 int		clean_struct(t_game *game);
 void	exit_game(t_game *game);
 

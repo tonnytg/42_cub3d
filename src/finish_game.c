@@ -12,8 +12,23 @@
 
 #include <cub3D.h>
 
+t_game	*clean_map(t_game *game)
+{
+	int		i;
+
+	i = 0;
+	while (i < game->map->lines)
+    {
+        free(game->map->grid[i]);
+		i++;
+    }
+	free(game->map->grid);
+    return	(game);
+}
+
 int	clean_struct(t_game *game)
 {
+	clean_map(game);
 	if (game->engine)
 		free(game->engine);
 	if (game->map)
