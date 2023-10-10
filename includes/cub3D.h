@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/09 23:36:27 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/09 23:51:59 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,18 @@
 # include <fcntl.h>
 
 #define MAX_LINE_SIZE 1024
+#define PIXEL_SIZE 32
+#define BUFFER_SIZE 42
+
+typedef struct s_engine
+{
+	void	*mlx;
+	void	*window;
+	int		width;
+	int		height;
+	int		screen_width;
+	int		screen_height;
+}	t_engine;
 
 typedef struct s_map
 {
@@ -27,8 +39,9 @@ typedef struct s_map
 
 typedef struct s_game
 {
-	int		id;
-	t_map	*map;
+	t_map		*map;
+	t_engine	*engine;
+	int			id;	
 }	t_game;
 
 /* Read Map */

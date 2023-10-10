@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_file_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:35 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/09 15:01:02 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/09 23:48:05 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 int	is_invalid_arguments(int argc, char **argv)
 {
-	printf("%s - %d\n", argv[1], argc);
 	if (argc != 2
 		|| (argv[1] == NULL))
 	{
-		printf("1\n");
 		return (1);
 	}
 	return (0);

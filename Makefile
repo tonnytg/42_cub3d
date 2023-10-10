@@ -6,12 +6,12 @@ HEAD_DIR=	includes libs/libft
 OBJ_DIR	=	bin
 SRC_DIR	=	src
 
-SRC	=	src/main.c				\
-		src/check_file_map.c	\
-		src/file/file.c			\
-		src/map/map.c			\
-		src/load_game.c			\
-		src/finish_game.c		\
+SRC	=	src/main.c					\
+		src/file/check_file_map.c	\
+		src/file/file.c				\
+		src/map/map.c				\
+		src/load_game.c				\
+		src/finish_game.c			\
 		src/start_game.c
 
 OBJ	=	$(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)

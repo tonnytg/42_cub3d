@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 00:12:15 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/09 15:03:16 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/09 23:49:54 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 
 int	open_file(t_game *game, char **argv)
 {
-	printf("file map: %s\n", argv[1]);
 	game->map->fd = open(argv[1], O_RDONLY);
 	if (game->map->fd < 0)
 	{
