@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:55:00 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/09 23:48:32 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/10 18:01:02 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_game	*load_game(t_game *game, char **argv)
 	if (open_file(game, argv))
 	{
 		printf("ERROR: can't open file map!");
-		return (NULL);	
+		return (NULL);
 	}
 	if (read_map(game))
 	{

@@ -11,13 +11,6 @@
 /* ************************************************************************** */
 
 #include <cub3D.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <string.h>
-#include <errno.h>
-
 
 int	open_file(t_game *game, char **argv)
 {
@@ -25,7 +18,7 @@ int	open_file(t_game *game, char **argv)
 	if (game->map->fd < 0)
 	{
 		printf("ERROR: can't open file map!");
-		return (1);	
+		return (1);
 	}
 	return (0);
 }

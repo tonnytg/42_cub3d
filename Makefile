@@ -9,6 +9,8 @@ SRC_DIR	=	src
 SRC	=	src/main.c					\
 		src/file/check_file_map.c	\
 		src/file/file.c				\
+		src/engine/exit/exit.c		\
+		src/engine/hooks/keys.c		\
 		src/map/map.c				\
 		src/load_game.c				\
 		src/finish_game.c			\
