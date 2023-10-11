@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:38:54 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/09 23:50:02 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/11 19:15:07 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,23 @@ int	get_size_map(t_game *game)
 	return (0);
 }
 
-t_game	*create_map(t_game *game)
+t_game *create_map(t_game *game)
+{
+    int i;
+
+    i = 0;
+    game->map->grid = (char **)malloc(game->map->lines * sizeof(char *));
+    while (i < game->map->lines)
+    {
+        game->map->grid[i] = (char *)malloc(game->map->columns * sizeof(char));
+        // Inicialize a linha recém-alocada com zeros
+        memset(game->map->grid[i], 0, game->map->columns * sizeof(char));
+        i++;
+    }
+    return (game);
+}
+
+t_game	*create_map2(t_game *game)
 {
 	int		i;
 
@@ -97,12 +113,9 @@ t_game *set_value_to_map(t_game *game, int line_number, char *line)
 	i = 0;
 	while (line[i] != '\0')
 	{
-		printf("%c", line[i]);
 		game->map->grid[line_number][i] = line[i];
 		i++;
 	}
-	printf("\n");
-	// printf("grid[%d]: %s\n", line_number, game->map->grid[line_number]);
 	return (game);
 }
 
@@ -126,7 +139,6 @@ int	read_map(t_game *game)
 			if (buffer[i] == '\n' || buffer[i] == '\0')
 			{
 				line[line_size] = '\0';
-				// printf("call line: %d\n", line_number);
 				set_value_to_map(game, line_number, line);
 				line_size = 0;
 				line_number++;
@@ -137,7 +149,6 @@ int	read_map(t_game *game)
 		}
 		if (buffer[bytes_read - 1] == '\n')
 		{
-			printf("end of line\n");
 			break ;
 		}
 		bytes_read = read(game->map->fd, buffer, sizeof(buffer));
