@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/10 18:00:47 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/13 04:35:35 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,29 @@
 # include <errno.h>
 
 # define MAX_LINE_SIZE 1024
-# define PIXEL_SIZE 32
-# define BUFFER_SIZE 42
+# define PIXEL_SIZE 16
+# define MAP_SIZE 16
+# define PLAYER_SIZE 8
+# define BUFFER_SIZE 1024
 
-# define WIDTH 720
-# define HEIGHT 480
+# define WIDTH 1024
+# define HEIGHT 720
 
 # define ESC 65307
 # define UP 65362
 # define DOWN 65364
 # define LEFT 65361
 # define RIGHT 65363
+
+typedef struct s_images
+{
+	int		*wall;
+	int		x;
+	int		y;
+	void	*collectible;
+	void	*exit;
+	void	*player;
+}	t_images;
 
 typedef struct s_engine
 {
@@ -44,6 +56,14 @@ typedef struct s_engine
 	int		screen_width;
 	int		screen_height;
 }	t_engine;
+
+typedef struct s_player
+{
+	int	x;
+	int	y;
+	int	moved;
+	int	collected;
+}	t_player;
 
 typedef struct s_map
 {
@@ -57,6 +77,8 @@ typedef struct s_game
 {
 	t_map		*map;
 	t_engine	*engine;
+	t_images	*images;
+	t_player	*player;
 	int			id;	
 }	t_game;
 

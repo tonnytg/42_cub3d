@@ -6,15 +6,17 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:55:00 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/11 18:30:10 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/13 04:36:47 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
-#include <fcntl.h>
 
 int	init_game_struct(t_game *game)
 {
+	game->images = ft_calloc(1, sizeof(t_images));
+	// game->player = ft_calloc(1, sizeof(t_player));
+	
 	game->map = ft_calloc(1, sizeof(t_map));
 	if (game->map == NULL)
 		return (1);
@@ -31,18 +33,18 @@ t_game	*load_game(t_game *game, char **argv)
 	init_game_struct(game);
 	if (open_file(game, argv))
 	{
-		printf("ERROR: can't open file map!");
+		printf("Error\ncan't open file map!");
 		return (NULL);
 	}
 	if (get_size_map(game))
 	{
-		printf("ERROR: can't read map inside file or invalid content!\n");
+		printf("Error\ncan't read map inside file or invalid content!\n");
 		return (NULL);
 	}
 	close(game->map->fd);
 	if (open_file(game, argv))
 	{
-		printf("ERROR: can't open file map!");
+		printf("Error\ncan't open file map!");
 		return (NULL);
 	}
 	printf("line: %d\n", game->map->lines);
@@ -50,7 +52,7 @@ t_game	*load_game(t_game *game, char **argv)
 	create_map(game);
 	if (read_map(game))
 	{
-		printf("ERROR: can't read map inside file or invalid content!\n");
+		printf("Error\ncan't read map inside file or invalid content!\n");
 		return (NULL);
 	}
 	close(game->map->fd);

@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:38:54 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/11 19:15:07 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/13 04:33:27 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	get_size_map(t_game *game)
 	}
 	if (bytes_read == -1)
 	{
-		perror("Erro na leitura do arquivo");
+		perror("Error\ntry read line");
 		exit(1);
 	}
 	if (line_size > 0)
