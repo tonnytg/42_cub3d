@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/13 05:12:08 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/13 05:58:04 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <unistd.h>
 # include <string.h>
 # include <errno.h>
+# include <math.h>
 
 # define MAX_LINE_SIZE 1024
 # define PIXEL_SIZE 16
@@ -32,10 +33,15 @@
 # define HEIGHT 720
 
 # define ESC 65307
-# define UP 65362
-# define DOWN 65364
+# define UP 119
+# define DOWN 115 
 # define LEFT 65361
 # define RIGHT 65363
+
+# define UP2 65362
+# define DOWN2 65364
+# define LEFT2 113
+# define RIGHT2 101
 
 typedef struct s_images
 {
@@ -59,10 +65,11 @@ typedef struct s_engine
 
 typedef struct s_player
 {
-	int	x;
-	int	y;
-	int	moved;
-	int	collected;
+	int		x;
+	int		y;
+	float	angle;
+	int		moved;
+	int		collected;
 }	t_player;
 
 typedef struct s_map
@@ -90,6 +97,12 @@ int		is_invalid_map(int argc, char **argv);
 int		read_map(t_game *game);
 int		get_size_map(t_game *game);
 t_game	*create_map(t_game *game);
+
+/* Map in MLX */
+int		build_map(t_game *game);
+
+/* Player */
+void	put_player(t_game *game, int x, int y);
 
 /* Core */
 t_game	*load_game(t_game *game, char **argv);
