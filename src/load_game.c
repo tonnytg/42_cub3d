@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:55:00 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/13 05:28:34 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/14 03:13:44 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ int	init_game_struct(t_game *game)
 t_game	*load_game(t_game *game, char **argv)
 {
 	if (game == NULL)
-		return (NULL);
+	{
+		printf("Error\nNot enough resources available to allocate memory.");
+		return (1);
+	}
 	init_game_struct(game);
 	if (open_file(game, argv))
 	{
