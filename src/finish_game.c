@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:54:42 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/13 04:42:29 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/13 04:59:25 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ t_game	*clean_map(t_game *game)
 
 int	clean_struct(t_game *game)
 {
-	clean_images(game);
-	free(game->images);
-	free(game->player);
+	// clean_images(game);
+	// free(game->images);
+	// free(game->player);
 	clean_map(game);
 	if (game->engine)
 		free(game->engine);

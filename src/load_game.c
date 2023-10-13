@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:55:00 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/13 04:36:47 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/13 05:01:42 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	init_game_struct(t_game *game)
 {
-	game->images = ft_calloc(1, sizeof(t_images));
+	// game->images = ft_calloc(1, sizeof(t_images));
 	// game->player = ft_calloc(1, sizeof(t_player));
 	
 	game->map = ft_calloc(1, sizeof(t_map));
