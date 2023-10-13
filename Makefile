@@ -9,7 +9,8 @@ SRC_DIR	=	src
 SRC	=	src/main.c					\
 		src/file/check_file_map.c	\
 		src/file/file.c				\
-		src/map/map.c				\
+		src/map/map_read.c			\
+		src/map/map_check.c			\
 		src/load_game.c				\
 		src/finish_game.c			\
 		src/start_game.c
