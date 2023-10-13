@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:53:48 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/13 04:57:13 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/13 05:25:59 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,16 @@ void	put_player(t_game *game, int x, int y)
 int	load_images(t_game *game)
 {
 	game->images->wall = mlx_xpm_file_to_image(game->engine->mlx, "textures/wall.xpm",
-											   &game->images->x, &game->images->y);
+												&game->images->width, &game->images->height);
 	game->images->collectible = mlx_xpm_file_to_image(game->engine->mlx,
-													  "textures/collectible.xpm", &game->images->x, &game->images->y);
+												"textures/collectible.xpm",
+												&game->images->width, &game->images->height);
 	game->images->exit = mlx_xpm_file_to_image(game->engine->mlx,
 											   "textures/exit.xpm",
-											   &game->images->x, &game->images->y);
+											   &game->images->width, &game->images->height);
 	game->images->player = mlx_xpm_file_to_image(game->engine->mlx,
-												 "textures/player.xpm",
-												 &game->images->x, &game->images->y);
+												"textures/player.xpm",
+												&game->images->width, &game->images->height);
 	if (!game->images->wall
 		|| !game->images->collectible
 		|| !game->images->exit
@@ -107,8 +108,8 @@ t_game	*start_game(t_game *game)
 	if (!game->engine->mlx)
 		return (NULL);
 	game->engine->window = mlx_new_window(game->engine->mlx, game->engine->width, game->engine->height, "cub3D");
-	// load_images(game);
-	// build_map(game);
+	load_images(game);
+	build_map(game);
 	// put_player(game, 10, 10);
 	mlx_hook(game->engine->window, 17, 0, (void *)exit_game, game);
 	mlx_hook(game->engine->window, 2, 1L << 0, key_press, game);

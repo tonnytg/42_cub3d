@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/13 05:00:50 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/13 05:12:08 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@
 
 typedef struct s_images
 {
-	int		*wall;
-	int		x;
-	int		y;
+	void	*wall;
 	void	*collectible;
 	void	*exit;
 	void	*player;
+	int		width;
+	int		height;
 }	t_images;
 
 typedef struct s_engine
