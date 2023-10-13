@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/13 05:58:04 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/13 20:22:35 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@
 # define ESC 65307
 # define UP 119
 # define DOWN 115 
-# define LEFT 65361
-# define RIGHT 65363
+# define LEFT 97
+# define RIGHT 100
 
 # define UP2 65362
 # define DOWN2 65364
-# define LEFT2 113
-# define RIGHT2 101
+# define LEFT2 65361
+# define RIGHT2 65363
 
 typedef struct s_images
 {
