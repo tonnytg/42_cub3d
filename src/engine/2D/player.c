@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 13:35:12 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/14 14:07:15 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/14 14:20:42 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,24 @@ void	draw_circle(t_game *game, int x_center, int y_center, int radius)
 
 void	draw_line(t_game *game, int x0, int y0, int x1, int y1, int color)
 {
-	int dx = abs(x1 - x0);
-	int dy = abs(y1 - y0);
-	int sx = (x0 < x1) ? 1 : -1;
-	int sy = (y0 < y1) ? 1 : -1;
-	int err = (dx > dy ? dx : -dy) / 2;
-	int e2;
+	int	dx;
+	int	dy;
+	int	sx;
+	int	sy;
+	int	err;
+	int	e2;
 
+	dx = abs(x1 - x0);
+	dy = abs(y1 - y0);
+	sx = (x0 < x1) ? 1 : -1;
+	sy = (y0 < y1) ? 1 : -1;
+	err = (dx > dy ? dx : -dy) / 2;
+	e2 = 0;
 	while (1)
 	{
 		mlx_pixel_put(game->engine->mlx, game->engine->window, x0, y0, color);
 		if (x0 == x1 && y0 == y1)
-			break;
+			break ;
 		e2 = err;
 		if (e2 > -dx)
 		{
@@ -79,22 +85,25 @@ void	draw_line(t_game *game, int x0, int y0, int x1, int y1, int color)
 
 void	put_player(t_game *game, int x, int y)
 {
-	int color = 0x00FF00; // Cor verde para o jogador
-	int radius = PLAYER_SIZE / 2; // Raio da bolinha
-	int line_length = radius + 10; // Comprimento da linha indicadora
+	int	color;
+	int	radius;
+	int	line_length;
+	int	end_x;
+	int	end_y;
 
-	// Desenha o círculo do jogador
+	color = 0x00FF00;
+	radius = PLAYER_SIZE / 2;
+	line_length = radius + 10;
 	game->player->circle->color = 0x00FF00;
 	draw_circle(game, x * MAP_SIZE + radius, y * MAP_SIZE + radius, radius);
-	// Desenha a linha indicadora com base no ângulo
-	int end_x = x * MAP_SIZE + radius + line_length * cos(game->player->angle);
-	int end_y = y * MAP_SIZE + radius - line_length * sin(game->player->angle); // '-' porque o eixo y é invertido na tela
-	draw_line(game, 
-			  x * MAP_SIZE + radius, 
-			  y * MAP_SIZE + radius, 
-			  end_x, 
-			  end_y, 
-			  color);
+	end_x = x * MAP_SIZE + radius + line_length * cos(game->player->angle);
+	end_y = y * MAP_SIZE + radius - line_length * sin(game->player->angle);
+	draw_line(game,
+		x * MAP_SIZE + radius,
+		y * MAP_SIZE + radius,
+		end_x,
+		end_y,
+		color);
 	game->player->x = x;
 	game->player->y = y;
 }
