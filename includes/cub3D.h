@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/14 14:06:56 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/14 23:31:51 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,25 @@ typedef struct s_engine
 	int		screen_height;
 }	t_engine;
 
+typedef struct s_player_line
+{
+	int	x0;
+	int	y0;
+	int	x1;
+	int	y1;
+	int	dx;
+	int	dy;
+	int	sx;
+	int	sy;
+	int	err;
+	int	e2;
+}	t_player_line;
+
 typedef struct s_player_circle
 {
+	int	x_center;
+	int	y_center;
+	int	radius;
 	int	color;
 	int	x;
 	int	y;
@@ -73,6 +90,7 @@ typedef struct s_player_circle
 
 typedef struct s_player
 {
+	t_player_line	*line;
 	t_player_circle	*circle;
 	int				x;
 	int				y;
@@ -117,6 +135,8 @@ int		build_map(t_game *game);
 
 /* Player */
 void	put_player(t_game *game, int x, int y);
+void	draw_line(t_game *game);
+void	draw_circle(t_game *game);
 
 /* Core */
 t_game	*load_game(t_game *game, char **argv);

@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:54:42 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/14 14:08:30 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/14 23:15:53 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int	clean_struct(t_game *game)
 	{
 		if (game->player->circle)
 			free(game->player->circle);
+		if (game->player->line)
+			free(game->player->line);
 		free(game->player);
 	}
 	if (game->map)
