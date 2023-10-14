@@ -14,11 +14,10 @@
 
 void	exit_game(t_game *game)
 {
-	// imagens precisam ser deletadas antes do mlx
 	mlx_destroy_image(game->engine->mlx, game->images->wall);
 	mlx_destroy_image(game->engine->mlx, game->images->collectible);
 	mlx_destroy_image(game->engine->mlx, game->images->exit);
-	mlx_destroy_image(game->engine->mlx, game->images->player);	
+	mlx_destroy_image(game->engine->mlx, game->images->player);
 	mlx_destroy_window(game->engine->mlx, game->engine->window);
 	mlx_destroy_display(game->engine->mlx);
 	if (game->engine->mlx)

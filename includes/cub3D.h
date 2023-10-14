@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/13 20:22:35 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/14 14:06:56 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,22 @@ typedef struct s_engine
 	int		screen_height;
 }	t_engine;
 
+typedef struct s_player_circle
+{
+	int	color;
+	int	x;
+	int	y;
+	int	p;
+}	t_player_circle;
+
 typedef struct s_player
 {
-	int		x;
-	int		y;
-	float	angle;
-	int		moved;
-	int		collected;
+	t_player_circle	*circle;
+	int				x;
+	int				y;
+	float			angle;
+	int				moved;
+	int				collected;
 }	t_player;
 
 typedef struct s_map
@@ -90,6 +99,7 @@ typedef struct s_game
 }	t_game;
 
 /* Read Map */
+int		count_columns(char *str, int *columns);
 int		open_file(t_game *game, char **argv);
 int		is_invalid_map_file(int argc, char **argv);
 int		is_invalid_arguments(int argc, char **argv);
@@ -97,6 +107,10 @@ int		is_invalid_map(int argc, char **argv);
 int		read_map(t_game *game);
 int		get_size_map(t_game *game);
 t_game	*create_map(t_game *game);
+
+/* Images */
+int		load_images(t_game *game);
+void	put_image(t_game *game, int *image, int x, int y);
 
 /* Map in MLX */
 int		build_map(t_game *game);
@@ -116,5 +130,8 @@ int		key_press(int keycode, t_game *game);
 t_game	*clean_map(t_game *game);
 int		clean_struct(t_game *game);
 void	exit_game(t_game *game);
+
+/* Utils */
+void	print_map_prompt(t_game *game);
 
 #endif

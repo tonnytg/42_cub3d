@@ -35,7 +35,7 @@ int	check_format_file(int argc, char **argv)
 				if (argv[1][total - 3] == 'c')
 					if (argv[1][total - 4] == '.')
 						return (0);
-	ft_printf("Error\nwrong file extension!\n");						
+	ft_printf("Error\nwrong file extension!\n");
 	return (1);
 }
 
