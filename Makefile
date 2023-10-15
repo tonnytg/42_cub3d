@@ -21,6 +21,7 @@ SRC	=	src/main.c						\
 		src/utils/print_map.c			\
 		src/load_game.c					\
 		src/finish_game.c				\
+		src/map/map_utils.c				\
 		src/map/map_read.c				\
 		src/map/map_check.c				\
 		src/start_game.c
