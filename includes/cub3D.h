@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/15 19:30:01 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/16 00:22:57 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define MAX_LINE_SIZE 1024
 # define PIXEL_SIZE 16
 # define MAP_SIZE 16
-# define PLAYER_SIZE 8
+# define PLAYER_SIZE 6
 # define BUFFER_SIZE 1024
 
 # define WIDTH 1024
@@ -44,11 +44,18 @@
 # define LEFT2 65361
 # define RIGHT2 65363
 
+typedef struct s_player_fov
+{
+	int	x0;
+	int	y0;
+	int	x1;
+	int	y1;
+	int	color;
+}	t_player_fov;
+
 typedef struct s_images
 {
 	void	*wall;
-	void	*collectible;
-	void	*exit;
 	void	*player;
 	int		width;
 	int		height;
@@ -91,6 +98,7 @@ typedef struct s_player_circle
 
 typedef struct s_player
 {
+	t_player_fov	*fov_line;
 	t_player_line	*line;
 	t_player_circle	*circle;
 	int				x;
@@ -126,6 +134,10 @@ int		is_invalid_map(int argc, char **argv);
 int		read_map(t_game *game);
 int		get_size_map(t_game *game);
 int		verify_grid(char **grid);
+
+/* 2D */
+void	set_value_to_draw_line(t_player_line *l);
+void	draw_fov_lines(t_game *game);
 
 /* Images */
 int		load_images(t_game *game);

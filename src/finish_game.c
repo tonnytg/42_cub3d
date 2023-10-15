@@ -6,11 +6,24 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:54:42 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/15 19:43:40 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/16 00:23:14 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
+
+void	free_table(char **table)
+{
+	int	index;
+
+	index = 0;
+	while (table[index])
+	{
+		free(table[index]);
+		index++;
+	}
+	free(table);
+}
 
 t_game	*clean_map(t_game *game)
 {
@@ -23,8 +36,6 @@ t_game	*clean_map(t_game *game)
 			free(game->map->grid[i]);
 		i++;
 	}
-	if (game->map->grid)
-		free(game->map->grid);
 	return (game);
 }
 
@@ -38,13 +49,12 @@ int	clean_struct(t_game *game)
 			free(game->player->circle);
 		if (game->player->line)
 			free(game->player->line);
+		if (game->player->fov_line)
+			free(game->player->fov_line);
 		free(game->player);
 	}
-	if (game->map)
-	{
-		clean_map(game);
-		free(game->map);
-	}
+	free_table(game->map->grid);
+	free(game->map);
 	if (game->engine)
 		free(game->engine);
 	if (game)
