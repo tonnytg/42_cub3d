@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/09 23:51:59 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/15 04:13:16 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 # include <mlx.h>
 # include <libft.h>
+# include <get_next_line.h>
 # include <stdio.h>
 # include <fcntl.h>
 
 #define MAX_LINE_SIZE 1024
 #define PIXEL_SIZE 32
-#define BUFFER_SIZE 42
 
 typedef struct s_engine
 {
@@ -34,14 +34,15 @@ typedef struct s_engine
 
 typedef struct s_map
 {
-	int	fd;
+	int		fd;
+	char	**grid;
 }	t_map;
 
 typedef struct s_game
 {
 	t_map		*map;
 	t_engine	*engine;
-	int			id;	
+	int			id;
 }	t_game;
 
 /* Read Map */
@@ -50,6 +51,7 @@ int	is_invalid_map_file(int argc, char **argv);
 int	is_invalid_arguments(int argc, char **argv);
 int	is_invalid_map(int argc, char **argv);
 int	read_map(t_game *game);
+int	verify_grid(char **grid);
 
 /* Core */
 t_game	*load_game(t_game *game, char **argv);
