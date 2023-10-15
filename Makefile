@@ -16,12 +16,13 @@ SRC	=	src/main.c						\
 		src/engine/2D/player.c			\
 		src/engine/2D/player_circle.c	\
 		src/engine/2D/player_line.c		\
-		src/map/map.c					\
 		src/map/get_size.c				\
 		src/map/build_map.c				\
 		src/utils/print_map.c			\
 		src/load_game.c					\
 		src/finish_game.c				\
+		src/map/map_read.c				\
+		src/map/map_check.c				\
 		src/start_game.c
 
 OBJ	=	$(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
