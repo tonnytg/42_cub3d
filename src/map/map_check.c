@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 20:43:19 by lbiasuz           #+#    #+#             */
-/*   Updated: 2023/10/13 15:37:13 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/15 04:41:37 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	arr_size(char	**grid)
  
 int	verify_valid_node(char **grid, int x, int y)
 {
-	if (!ft_strchr("01NESW", grid[y][x]))
+	if (ft_strchr("01NESW ", grid[y][x]) == 0)
 		return (0);
-	if (grid[y][x] != '1')
+	if (grid[y][x] != '1' && grid[y][x] != ' ')
 	{
 		if (x == 0 || y == 0 || x == (int) ft_strlen(grid[y])
 			|| y == arr_size(grid))

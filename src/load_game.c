@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:55:00 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/09 23:48:32 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/15 04:16:13 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,14 @@ t_game	*load_game(t_game *game, char **argv)
 	{
 		printf("ERROR: can't read map inside file or invalid content!\n");
 		return (NULL);
+	}
+	if (!verify_grid(game->map->grid))
+		printf("Grid invalido \n");
+	int index = 0;
+	while (game->map->grid[index])
+	{
+		printf("%s|\n", game->map->grid[index]);
+		index++;
 	}
 	close(game->map->fd);
 	return (game);

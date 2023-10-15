@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/10 18:47:42 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/15 04:13:16 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	is_invalid_map_file(int argc, char **argv);
 int	is_invalid_arguments(int argc, char **argv);
 int	is_invalid_map(int argc, char **argv);
 int	read_map(t_game *game);
+int	verify_grid(char **grid);
 
 /* Core */
 t_game	*load_game(t_game *game, char **argv);

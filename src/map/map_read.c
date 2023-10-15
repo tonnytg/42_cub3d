@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   map_read.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:38:54 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/09 23:50:02 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/15 04:22:46 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int	is_config_line(char	*line)
 {
-	if (ft_strncmp(line, "NO ", 3)
-		|| ft_strncmp(line, "SO ", 3)
-		|| ft_strncmp(line, "WE ", 3)
-		|| ft_strncmp(line, "AE ", 3)
-		|| ft_strncmp(line, "F ", 2)
-		|| ft_strncmp(line, "C ", 2))
+	if (!ft_strncmp(line, "NO ", 3)
+		|| !ft_strncmp(line, "SO ", 3)
+		|| !ft_strncmp(line, "WE ", 3)
+		|| !ft_strncmp(line, "EA ", 3)
+		|| !ft_strncmp(line, "F ", 2)
+		|| !ft_strncmp(line, "C ", 2))
 		return (1);
 	return (0);
 }
@@ -49,11 +49,11 @@ int	normalize_map_size(char **grid)
 
 	index = 0;
 	biggest_size = find_biggest_row_size(grid);
-	while (index)
+	while (grid[index])
 	{
 		if (ft_strlen(grid[index]) < biggest_size)
 		{
-			filler_string = malloc(biggest_size - ft_strlen(grid[index]));
+			filler_string = ft_calloc(biggest_size - ft_strlen(grid[index]) + 1, 1);
 			ft_memset(filler_string, ' ', biggest_size - ft_strlen(grid[index]));
 			normalized_string = ft_strjoin(grid[index], filler_string);
 			free(filler_string);
@@ -68,21 +68,26 @@ int	normalize_map_size(char **grid)
 int	parse_map_file(t_game *game, char *line)
 {
 	char	*full_map;
+	char	*temp;
 
 	full_map = "";
-	while (line && line[0] != '\n')
+	while (line)
 	{
+		temp = full_map;
 		full_map = ft_strjoin(full_map, line);
 		free(line);
 		line = get_next_line(game->map->fd);
+		if (temp[0] != 0)
+			free(temp);
 	}
 	game->map->grid = ft_split(full_map, '\n');
-	if (full_map[0] != '\0')
+	if (full_map[0] != 0)
 		free(full_map);
-	return (1);
+	normalize_map_size(game->map->grid);
+	return (0);
 }
 
-int	parse_config_file(t_game *game)
+int	read_map(t_game *game)
 {
 	char	*line;
 
