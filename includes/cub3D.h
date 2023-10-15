@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/10/14 23:31:51 by antthoma         ###   ########.fr       */
-=======
-/*   Updated: 2023/10/15 04:13:16 by lbiasuz          ###   ########.fr       */
->>>>>>> main
+/*   Updated: 2023/10/15 19:30:01 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +24,6 @@
 # include <errno.h>
 # include <math.h>
 
-<<<<<<< HEAD
 # define MAX_LINE_SIZE 1024
 # define PIXEL_SIZE 16
 # define MAP_SIZE 16
@@ -58,10 +53,6 @@ typedef struct s_images
 	int		width;
 	int		height;
 }	t_images;
-=======
-#define MAX_LINE_SIZE 1024
-#define PIXEL_SIZE 32
->>>>>>> main
 
 typedef struct s_engine
 {
@@ -111,22 +102,16 @@ typedef struct s_player
 
 typedef struct s_map
 {
-<<<<<<< HEAD
 	char	**grid;
 	int		fd;
 	int		lines;
 	int		columns;
-=======
-	int		fd;
-	char	**grid;
->>>>>>> main
 }	t_map;
 
 typedef struct s_game
 {
 	t_map		*map;
 	t_engine	*engine;
-<<<<<<< HEAD
 	t_images	*images;
 	t_player	*player;
 	int			id;	
@@ -140,7 +125,7 @@ int		is_invalid_arguments(int argc, char **argv);
 int		is_invalid_map(int argc, char **argv);
 int		read_map(t_game *game);
 int		get_size_map(t_game *game);
-t_game	*create_map(t_game *game);
+int		verify_grid(char **grid);
 
 /* Images */
 int		load_images(t_game *game);
@@ -153,18 +138,6 @@ int		build_map(t_game *game);
 void	put_player(t_game *game, int x, int y);
 void	draw_line(t_game *game);
 void	draw_circle(t_game *game);
-=======
-	int			id;
-}	t_game;
-
-/* Read Map */
-int	open_file(t_game *game, char **argv);
-int	is_invalid_map_file(int argc, char **argv);
-int	is_invalid_arguments(int argc, char **argv);
-int	is_invalid_map(int argc, char **argv);
-int	read_map(t_game *game);
-int	verify_grid(char **grid);
->>>>>>> main
 
 /* Core */
 t_game	*load_game(t_game *game, char **argv);

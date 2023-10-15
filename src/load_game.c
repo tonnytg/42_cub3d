@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:55:00 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/15 19:13:23 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/15 19:35:00 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,13 @@ t_game	*load_game(t_game *game, char **argv)
 	init_game_struct(game);
 	if (open_file(game, argv))
 		return (NULL);
-	if (get_size_map(game))
-	{
-		printf("Error\ncan't read map inside file or invalid content!\n");
-		return (NULL);
-	}
-	close(game->map->fd);
-	if (open_file(game, argv))
-		return (NULL);
-	create_map(game);
 	if (read_map(game))
 	{
 		printf("Error\ncan't read map inside file or invalid content!\n");
 		return (NULL);
 	}
 	if (!verify_grid(game->map->grid))
-		printf("Grid invalido \n");
+		printf("Error\nInvalid Grid\n");
 	int index = 0;
 	while (game->map->grid[index])
 	{
