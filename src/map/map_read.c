@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_read.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:38:54 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/15 04:22:46 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/15 22:20:17 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	is_config_line(char	*line)
 int	find_biggest_row_size(char **grid)
 {
 	int		index;
-	size_t		biggest_size;
+	size_t	biggest_size;
 
 	index = 0;
 	biggest_size = 0;
@@ -53,8 +53,10 @@ int	normalize_map_size(char **grid)
 	{
 		if (ft_strlen(grid[index]) < biggest_size)
 		{
-			filler_string = ft_calloc(biggest_size - ft_strlen(grid[index]) + 1, 1);
-			ft_memset(filler_string, ' ', biggest_size - ft_strlen(grid[index]));
+			filler_string = ft_calloc(
+					biggest_size - ft_strlen(grid[index]) + 1, 1);
+			ft_memset(
+				filler_string, ' ', biggest_size - ft_strlen(grid[index]));
 			normalized_string = ft_strjoin(grid[index], filler_string);
 			free(filler_string);
 			free(grid[index]);
