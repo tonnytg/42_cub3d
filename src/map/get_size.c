@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_size.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/04 04:49:23 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/14 03:12:42 by antthoma         ###   ########.fr       */
+/*   Created: 2023/10/14 12:27:39 by antthoma          #+#    #+#             */
+/*   Updated: 2023/10/14 12:27:49 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-int	main(int argc, char **argv)
+int	get_size_map(t_game *game)
 {
-	t_game	*game;
+	char	*line;
 
-	if (is_invalid_map_file(argc, argv))
+	line = get_next_line(game->map->fd);
+	if (line == NULL)
 		return (1);
-	game = ft_calloc(1, sizeof(t_game));
-	load_game(game, argv);
-	start_game(game);
-	finish_game(game);
+	game->map->lines = 0;
+	game->map->columns = 0;
+	while (line != NULL)
+	{
+		game->map->lines++;
+		count_columns(line, &game->map->columns);
+		free(line);
+		line = get_next_line(game->map->fd);
+	}
 	return (0);
 }

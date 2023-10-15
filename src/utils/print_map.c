@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/04 04:49:23 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/14 03:12:42 by antthoma         ###   ########.fr       */
+/*   Created: 2023/10/14 14:11:20 by antthoma          #+#    #+#             */
+/*   Updated: 2023/10/14 14:14:09 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-int	main(int argc, char **argv)
+void	print_map_prompt(t_game *game)
 {
-	t_game	*game;
+	int	i;
+	int	j;
 
-	if (is_invalid_map_file(argc, argv))
-		return (1);
-	game = ft_calloc(1, sizeof(t_game));
-	load_game(game, argv);
-	start_game(game);
-	finish_game(game);
-	return (0);
+	i = 0;
+	while (i < game->map->lines)
+	{
+		j = 0;
+		while (j < game->map->columns)
+		{
+			printf("%c", game->map->grid[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
 }

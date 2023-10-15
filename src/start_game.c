@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:53:48 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/09 23:51:20 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/14 13:55:55 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,23 @@
 
 t_game	*start_game(t_game *game)
 {
-	printf("start game %p!\n", game);
-
+	if (game == NULL)
+		return (NULL);
+	print_map_prompt(game);
+	game->engine->width = WIDTH;
+	game->engine->height = HEIGHT;
 	game->engine->mlx = mlx_init();
 	if (!game->engine->mlx)
 		return (NULL);
+	game->engine->window = mlx_new_window(game->engine->mlx,
+			game->engine->width,
+			game->engine->height,
+			"cub3D");
+	load_images(game);
+	build_map(game);
+	put_player(game, game->player->x, game->player->y);
+	mlx_hook(game->engine->window, 17, 0, (void *)exit_game, game);
+	mlx_hook(game->engine->window, 2, 1L << 0, key_press, game);
+	mlx_loop(game->engine->mlx);
 	return (game);
 }

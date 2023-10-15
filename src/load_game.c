@@ -3,18 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   load_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:55:00 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/15 04:16:13 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/15 19:13:23 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
-#include <fcntl.h>
 
 int	init_game_struct(t_game *game)
 {
+	game->images = ft_calloc(1, sizeof(t_images));
+	game->player = ft_calloc(1, sizeof(t_player));
+	game->player->circle = ft_calloc(1, sizeof(t_player_circle));
+	game->player->line = ft_calloc(1, sizeof(t_player_line));
 	game->map = ft_calloc(1, sizeof(t_map));
 	if (game->map == NULL)
 		return (1);
@@ -26,15 +29,26 @@ int	init_game_struct(t_game *game)
 
 t_game	*load_game(t_game *game, char **argv)
 {
+	if (game == NULL)
+	{
+		printf("Error\nNot enough resources available to allocate memory.");
+		return (NULL);
+	}
 	init_game_struct(game);
 	if (open_file(game, argv))
+		return (NULL);
+	if (get_size_map(game))
 	{
-		printf("ERROR: can't open file map!");
-		return (NULL);	
+		printf("Error\ncan't read map inside file or invalid content!\n");
+		return (NULL);
 	}
+	close(game->map->fd);
+	if (open_file(game, argv))
+		return (NULL);
+	create_map(game);
 	if (read_map(game))
 	{
-		printf("ERROR: can't read map inside file or invalid content!\n");
+		printf("Error\ncan't read map inside file or invalid content!\n");
 		return (NULL);
 	}
 	if (!verify_grid(game->map->grid))
