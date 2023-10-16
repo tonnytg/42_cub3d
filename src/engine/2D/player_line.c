@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_line.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 23:30:45 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/16 03:04:17 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/17 00:20:12 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,59 +73,35 @@ void	draw_line(t_game *game)
 	}
 }
 
-void draw_line_fov1(t_game *game)
+int TILE = 16;
+
+void draw_box(t_game *game, int fov_id, int line_length)
 {
-    t_player_line *l = game->player->line;
-    set_value_to_draw_line(l);
+    int x = fov_id * (game->engine->width / 60);
+    int y = (game->engine->height / 2) - (line_length / 2);
 
-    while (1)
+    while (x < fov_id * (game->engine->width / 60) + (game->engine->width / 60))
     {
-        if (l->x0 == l->x1 && l->y0 == l->y1)
-		{
-			break;	
-		}
-
-        if (l->x0 >= 0 && l->x0 < game->map->columns && l->y0 >= 0 && l->y0 < game->map->lines)
-		{
-            if (game->map->grid[l->y0][l->x0] == '1')
-			{
-				printf("houve colisão!\n");
-				printf("x0: %d\n", l->x0);
-				printf("y0: %d\n", l->y0);
-            }
-        } else
-		{
-			printf("fora do range\n");
-            break;
+        y = (game->engine->height / 2) - (line_length / 2);
+        while (y < line_length)
+        {
+            mlx_pixel_put(game->engine->mlx, game->engine->window, x, y, 0x0000FF);
+            y++;
         }
-		mlx_pixel_put(game->engine->mlx, game->engine->window, l->x0, l->y0, game->player->line->color);
-
-        l->e2 = l->err;
-
-        if (l->e2 > -l->dx) {
-            l->err -= l->dy;
-            l->x0 += l->sx;
-        }
-        if (l->e2 < l->dy) {
-            l->err += l->dx;
-            l->y0 += l->sy;
-        }
+        x++;
     }
 }
 
-int TILE = 16;
-
-void draw_line_fov(t_game *game)
+void draw_line_fov(t_game *game, double fov_id)
 {
+    int line_length = 0;
     t_player_line *l = game->player->line;
     set_value_to_draw_line(l);
 
     while (1)
     {
         if (l->x0 == l->x1 && l->y0 == l->y1)
-        {
-            break;	
-        }
+            break;
 
         int map_x = l->x0 / TILE;
         int map_y = l->y0 / TILE;
@@ -134,17 +110,15 @@ void draw_line_fov(t_game *game)
         {
             if (game->map->grid[map_y][map_x] == '1')
             {
+                draw_box(game, fov_id, (game->engine->height / 2) -line_length);
                 printf("houve colisão!\n");
                 printf("x0: %d\n", l->x0);
                 printf("y0: %d\n", l->y0);
                 break;
             }
-        } 
-        else
-        {
-            printf("fora do range\n");
-            break;
         }
+        line_length++;
+
         mlx_pixel_put(game->engine->mlx, game->engine->window, l->x0, l->y0, game->player->line->color);
 
         l->e2 = l->err;
@@ -162,8 +136,9 @@ void draw_line_fov(t_game *game)
 
 void calc_line_fov(t_game *game)
 {
+    double fov_id = 0;
     double fov = 60.0; // campo de visão de 60 graus
-    double angle_increment = 1.0; // ângulo de incremento para cada linha
+    double angle_increment = 0.5; // ângulo de incremento para cada linha
 
     double start_angle = game->player->angle - (fov / 2) * (M_PI / 180.0); // converte graus para radianos
     double end_angle = game->player->angle + (fov / 2) * (M_PI / 180.0);
@@ -183,9 +158,10 @@ void calc_line_fov(t_game *game)
         game->player->line->x1 = x1_red;
         game->player->line->y1 = y1_red;
 
-        game->player->line->color = 0xFF0000; // cor vermelha
+        game->player->line->color = 0xFFFF00; // cor vermelha
 
         // Desenhe a linha no FOV
-        draw_line_fov(game);
+        draw_line_fov(game, fov_id);
+        fov_id += angle_increment;
     }
 }

@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:38:24 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/16 14:42:55 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/16 23:42:49 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	render_map_2d(t_game *game)
 	build_map(game);
 	put_player(game, game->player->x, game->player->y);
 }
+
 
 int	key_press(int keycode, t_game *game)
 {
