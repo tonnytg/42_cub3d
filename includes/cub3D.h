@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/16 00:22:57 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/16 02:02:34 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ typedef struct s_player_line
 	int	sy;
 	int	err;
 	int	e2;
+	int color;
 }	t_player_line;
 
 typedef struct s_player_circle
@@ -137,7 +138,6 @@ int		verify_grid(char **grid);
 
 /* 2D */
 void	set_value_to_draw_line(t_player_line *l);
-void	draw_fov_lines(t_game *game);
 
 /* Images */
 int		load_images(t_game *game);
@@ -150,6 +150,7 @@ int		build_map(t_game *game);
 void	put_player(t_game *game, int x, int y);
 void	draw_line(t_game *game);
 void	draw_circle(t_game *game);
+void	calc_line_fov(t_game *game);
 
 /* Core */
 t_game	*load_game(t_game *game, char **argv);

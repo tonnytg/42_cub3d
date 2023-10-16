@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:38:24 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/15 23:46:54 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/16 01:34:51 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	render_map_2d(t_game *game)
 	mlx_clear_window(game->engine->mlx, game->engine->window);
 	build_map(game);
 	put_player(game, game->player->x, game->player->y);
-	draw_fov_lines(game);
 }
 
 int	key_press(int keycode, t_game *game)

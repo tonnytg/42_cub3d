@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 13:35:12 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/16 00:19:24 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/16 02:02:21 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ void	put_player(t_game *game, int x, int y)
 	game->player->line->y0 = y * 2 + radius;
 	game->player->line->x1 = end_x;
 	game->player->line->y1 = end_y;
+	game->player->circle->color = 0x00FF00;
 	draw_line(game);
 	game->player->x = x;
 	game->player->y = y;
+	calc_line_fov(game);
 }
