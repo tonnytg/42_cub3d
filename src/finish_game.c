@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   finish_game.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:54:42 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/16 00:23:14 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/16 15:07:35 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,6 @@ void	free_table(char **table)
 		index++;
 	}
 	free(table);
-}
-
-t_game	*clean_map(t_game *game)
-{
-	int	i;
-
-	i = 0;
-	while (i < game->map->lines)
-	{
-		if (game->map->grid[i])
-			free(game->map->grid[i]);
-		i++;
-	}
-	return (game);
 }
 
 int	clean_struct(t_game *game)

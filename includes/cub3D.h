@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/16 02:02:34 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/16 15:07:39 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,8 @@
 # include <errno.h>
 # include <math.h>
 
-# define MAX_LINE_SIZE 1024
-# define PIXEL_SIZE 16
 # define MAP_SIZE 16
 # define PLAYER_SIZE 6
-# define BUFFER_SIZE 1024
 
 # define WIDTH 1024
 # define HEIGHT 720
@@ -56,7 +53,6 @@ typedef struct s_player_fov
 typedef struct s_images
 {
 	void	*wall;
-	void	*player;
 	int		width;
 	int		height;
 }	t_images;
@@ -67,8 +63,6 @@ typedef struct s_engine
 	void	*window;
 	int		width;
 	int		height;
-	int		screen_width;
-	int		screen_height;
 }	t_engine;
 
 typedef struct s_player_line
@@ -133,7 +127,6 @@ int		is_invalid_map_file(int argc, char **argv);
 int		is_invalid_arguments(int argc, char **argv);
 int		is_invalid_map(int argc, char **argv);
 int		read_map(t_game *game);
-int		get_size_map(t_game *game);
 int		verify_grid(char **grid);
 
 /* 2D */
@@ -161,7 +154,6 @@ t_game	*finish_game(t_game *game);
 int		key_press(int keycode, t_game *game);
 
 /* Clean or Exit */
-t_game	*clean_map(t_game *game);
 int		clean_struct(t_game *game);
 void	exit_game(t_game *game);
 
