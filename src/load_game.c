@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:55:00 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/15 19:35:00 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/15 22:18:34 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	init_game_struct(t_game *game)
 
 t_game	*load_game(t_game *game, char **argv)
 {
+	int	index;
+
 	if (game == NULL)
 	{
 		printf("Error\nNot enough resources available to allocate memory.");
@@ -44,7 +46,7 @@ t_game	*load_game(t_game *game, char **argv)
 	}
 	if (!verify_grid(game->map->grid))
 		printf("Error\nInvalid Grid\n");
-	int index = 0;
+	index = 0;
 	while (game->map->grid[index])
 	{
 		printf("%s|\n", game->map->grid[index]);

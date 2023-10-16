@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 20:43:19 by lbiasuz           #+#    #+#             */
-/*   Updated: 2023/10/15 04:41:37 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/15 22:21:02 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	arr_size(char	**grid)
 		index++;
 	return (index);
 }
- 
+
 int	verify_valid_node(char **grid, int x, int y)
 {
 	if (ft_strchr("01NESW ", grid[y][x]) == 0)
@@ -49,7 +49,7 @@ int	verify_grid(char **grid)
 	while (grid[y])
 	{
 		x = 0;
-		while(grid[y][x])
+		while (grid[y][x])
 		{
 			if (!verify_valid_node(grid, x, y))
 				return (0);
