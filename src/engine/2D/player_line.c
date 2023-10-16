@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 23:30:45 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/16 02:38:00 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/16 03:01:32 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,27 +160,32 @@ void draw_line_fov(t_game *game)
     }
 }
 
-
 void calc_line_fov(t_game *game)
 {
-    t_player_line *l;
+    double fov = 60.0; // campo de visão de 60 graus
+    double angle_increment = 1.0; // ângulo de incremento para cada linha
 
-    l = game->player->line;
-    printf("draw fov %p\n", game);
-    // Obtenha as coordenadas finais da linha vermelha com base no ângulo do jogador
-    double red_line_length = 550;  // Defina o comprimento da linha vermelha (ajuste conforme necessário)
-    double player_angle = game->player->angle;
-    int x0_red = l->x1; // Comece a linha vermelha no final da linha verde
-    int y0_red = l->y1;
-    int x1_red = x0_red + red_line_length * cos(player_angle);
-    int y1_red = y0_red - red_line_length * sin(player_angle);
+    double start_angle = game->player->angle - (fov / 2) * (M_PI / 180.0); // converte graus para radianos
+    double end_angle = game->player->angle + (fov / 2) * (M_PI / 180.0);
 
-    // Desenhe a linha vermelha
-    set_value_to_draw_line(l);
-    l->x0 = x0_red;
-    l->y0 = y0_red;
-    l->x1 = x1_red;
-    l->y1 = y1_red;
-	game->player->line->color = 0xFF0000;
-    draw_line_fov(game);
+    // Inicializando o comprimento da linha e as coordenadas de início
+    double red_line_length = 550;
+    int x0_red = game->player->line->x1;
+    int y0_red = game->player->line->y1;
+
+    for (double current_angle = start_angle; current_angle <= end_angle; current_angle += angle_increment * (M_PI / 180.0)) {
+        int x1_red = x0_red + red_line_length * cos(current_angle);
+        int y1_red = y0_red - red_line_length * sin(current_angle); // lembre-se, a direção Y é invertida!
+
+        // Definindo a linha
+        game->player->line->x0 = x0_red;
+        game->player->line->y0 = y0_red;
+        game->player->line->x1 = x1_red;
+        game->player->line->y1 = y1_red;
+
+        game->player->line->color = 0xFF0000; // cor vermelha
+
+        // Desenhe a linha no FOV
+        draw_line_fov(game);
+    }
 }
