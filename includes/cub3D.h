@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/16 15:07:39 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/16 15:20:09 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define CUB3D_H
 
 # include <mlx.h>
-# include <libft.h>
-# include <get_next_line.h>
 # include <stdio.h>
 # include <fcntl.h>
 # include <stdlib.h>
@@ -23,6 +21,10 @@
 # include <string.h>
 # include <errno.h>
 # include <math.h>
+
+# include <libft.h>
+# include <get_next_line.h>
+# include <player.h>
 
 # define MAP_SIZE 16
 # define PLAYER_SIZE 6
@@ -41,15 +43,6 @@
 # define LEFT2 65361
 # define RIGHT2 65363
 
-typedef struct s_player_fov
-{
-	int	x0;
-	int	y0;
-	int	x1;
-	int	y1;
-	int	color;
-}	t_player_fov;
-
 typedef struct s_images
 {
 	void	*wall;
@@ -64,44 +57,6 @@ typedef struct s_engine
 	int		width;
 	int		height;
 }	t_engine;
-
-typedef struct s_player_line
-{
-	int	x0;
-	int	y0;
-	int	x1;
-	int	y1;
-	int	dx;
-	int	dy;
-	int	sx;
-	int	sy;
-	int	err;
-	int	e2;
-	int color;
-}	t_player_line;
-
-typedef struct s_player_circle
-{
-	int	x_center;
-	int	y_center;
-	int	radius;
-	int	color;
-	int	x;
-	int	y;
-	int	p;
-}	t_player_circle;
-
-typedef struct s_player
-{
-	t_player_fov	*fov_line;
-	t_player_line	*line;
-	t_player_circle	*circle;
-	int				x;
-	int				y;
-	float			angle;
-	int				moved;
-	int				collected;
-}	t_player;
 
 typedef struct s_map
 {

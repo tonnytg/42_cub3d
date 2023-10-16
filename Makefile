@@ -28,7 +28,9 @@ SRC	=	src/main.c						\
 		src/start_game.c
 
 OBJ	=	$(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
-HEADERS = includes/$(NAME).h libs/libft/libft.h
+HEADERS =	includes/$(NAME).h \
+			includes/player.h \
+			libs/libft/libft.h
 
 CC	= gcc
 CC_ARGS = -Wextra -Wall -Werror -g3
