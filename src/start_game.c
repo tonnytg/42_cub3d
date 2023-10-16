@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:53:48 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/14 13:55:55 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/15 23:41:57 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ t_game	*start_game(t_game *game)
 {
 	if (game == NULL)
 		return (NULL);
-	print_map_prompt(game);
 	game->engine->width = WIDTH;
 	game->engine->height = HEIGHT;
 	game->engine->mlx = mlx_init();

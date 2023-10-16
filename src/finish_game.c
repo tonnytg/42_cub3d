@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:54:42 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/15 21:05:25 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/16 00:23:14 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,12 @@ int	clean_struct(t_game *game)
 			free(game->player->circle);
 		if (game->player->line)
 			free(game->player->line);
+		if (game->player->fov_line)
+			free(game->player->fov_line);
 		free(game->player);
 	}
 	free_table(game->map->grid);
-	if (game->map)
-	{
-		clean_map(game);
-		free(game->map);
-	}
+	free(game->map);
 	if (game->engine)
 		free(game->engine);
 	if (game)
@@ -66,7 +64,6 @@ int	clean_struct(t_game *game)
 
 t_game	*finish_game(t_game *game)
 {
-	
 	clean_struct(game);
 	return (NULL);
 }

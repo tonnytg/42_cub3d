@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 14:11:20 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/14 14:14:09 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/15 23:13:19 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	print_map_prompt(t_game *game)
 	int	j;
 
 	i = 0;
+	printf("lines: %d\n", game->map->lines);
+	printf("columns: %d\n", game->map->columns);
 	while (i < game->map->lines)
 	{
 		j = 0;
