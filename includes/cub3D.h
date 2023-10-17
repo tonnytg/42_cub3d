@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/17 02:51:44 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/17 21:40:05 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,9 @@ int		key_press(int keycode, t_game *game);
 /* Clean or Exit */
 int		clean_struct(t_game *game);
 void	exit_game(t_game *game);
+
+// Draw
+void draw_line_fov(t_game *game, double fov_id);
+void draw_box(t_game *game, int fov_id, int line_length);
 
 #endif

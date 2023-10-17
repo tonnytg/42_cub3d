@@ -16,6 +16,7 @@ SRC	=	src/main.c						\
 		src/engine/2D/player.c			\
 		src/engine/2D/player_line.c		\
 		src/engine/2D/fov.c				\
+		src/engine/2D/draw.c			\
 		src/map/get_size.c				\
 		src/map/build_map.c				\
 		src/load_game.c					\

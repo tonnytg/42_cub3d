@@ -6,11 +6,28 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 23:30:45 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/17 19:47:45 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/17 23:10:02 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
+
+/* Bresenham Algorithms to draw line*/
+/*
+	dist.x: A diferença absoluta entre as coordenadas x
+		inicial e final da linha. Representa a largura horizontal da linha.
+	dist.y: A diferença absoluta entre as coordenadas y
+		inicial e final da linha. Representa a altura vertical da linha.
+	step.x: Direção do passo no eixo x. Pode ser 1
+		(para a direita) ou -1 (para a esquerda).
+	step.y: Direção do passo no eixo y. Pode ser 1
+		(para cima) ou -1 (para baixo).
+	err: O erro acumulado ao desenhar a linha.
+		É usado para determinar quando mover
+		a linha verticalmente ou horizontalmente.
+	e2: Uma variável temporária usada para armazenar um valor
+		intermediário do erro.
+*/
 
 void	set_value_to_draw_line(t_player_line *l)
 {
@@ -31,134 +48,26 @@ void	set_value_to_draw_line(t_player_line *l)
 	l->e2 = 0;
 }
 
-/* Bresenham Algorithms to draw line*/
-/*
-	dist.x: A diferença absoluta entre as coordenadas x
-		inicial e final da linha. Representa a largura horizontal da linha.
-	dist.y: A diferença absoluta entre as coordenadas y
-		inicial e final da linha. Representa a altura vertical da linha.
-	step.x: Direção do passo no eixo x. Pode ser 1
-		(para a direita) ou -1 (para a esquerda).
-	step.y: Direção do passo no eixo y. Pode ser 1
-		(para cima) ou -1 (para baixo).
-	err: O erro acumulado ao desenhar a linha.
-		É usado para determinar quando mover
-		a linha verticalmente ou horizontalmente.
-	e2: Uma variável temporária usada para armazenar um valor
-		intermediário do erro.
-*/
-void	draw_line(t_game *game)
-{
-	t_player_line	*l;
-
-	l = game->player->line;
-	set_value_to_draw_line(l);
-	while (1)
-	{
-		mlx_pixel_put(game->engine->mlx,
-			game->engine->window, l->beg.x, l->beg.y, game->player->line->color);
-		if (l->beg.x == l->end.x && l->beg.y == l->end.y)
-			break ;
-		l->e2 = l->err;
-		if (l->e2 > -l->dist.x)
-		{
-			l->err -= l->dist.y;
-			l->beg.x += l->step.x;
-		}
-		if (l->e2 < l->dist.y)
-		{
-			l->err += l->dist.x;
-			l->beg.y += l->step.y;
-		}
-	}
-}
-
-void draw_box(t_game *game, int fov_id, int line_length)
-{
-	int x = fov_id * (game->engine->width / 60);
-	int y = (game->engine->height / 2) - (line_length / 2);
-
-	while (x < fov_id * (game->engine->width / 60) + (game->engine->width / 60))
-	{
-		y = (game->engine->height / 2) - (line_length / 2);
-		while (y < line_length)
-		{
-			mlx_pixel_put(game->engine->mlx, game->engine->window, x, y, 0x000FF);
-			y++;
-		}
-		x++;
-	}
-}
-
-void draw_line_fov(t_game *game, double fov_id)
-{
-	int line_length = 0;
-	t_player_line *l = game->player->line;
-	set_value_to_draw_line(l);
-
-	while (1)
-	{
-		if (l->beg.x == l->end.x && l->beg.y == l->end.y)
-			break;
-
-		int map_x = l->beg.x / TILE_SIZE;
-		int map_y = l->beg.y / TILE_SIZE;
-
-		if (map_x >= 0 && map_x < game->map->columns && map_y >= 0 && map_y < game->map->lines)
-		{
-			if (game->map->grid[map_y][map_x] == '1')
-			{
-				draw_box(game, fov_id, (game->engine->height / 2) -line_length);
-				printf("houve colisão!\n");
-				printf("beg.x: %d\n", l->beg.x);
-				printf("beg.y: %d\n", l->beg.y);
-				break;
-			}
-		}
-		line_length++;
-
-		mlx_pixel_put(game->engine->mlx, game->engine->window, l->beg.x, l->beg.y, game->player->line->color);
-
-		l->e2 = l->err;
-
-		if (l->e2 > -l->dist.x) {
-			l->err -= l->dist.y;
-			l->beg.x += l->step.x;
-		}
-		if (l->e2 < l->dist.y) {
-			l->err += l->dist.x;
-			l->beg.y += l->step.y;
-		}
-	}
-}
-
 void calc_line_fov(t_game *game)
 {
 	double fov_id = 0;
-	double fov = 60.0; // campo de visão de 60 graus
-	double angle_increment = 0.5; // ângulo de incremento para cada linha
+	double angle_increment = 0.5;
+	double start_angle = game->player->angle - (FOV / 2) * (M_PI / 180.0); // converte graus para radianos
+	double end_angle = game->player->angle + (FOV / 2) * (M_PI / 180.0);
 
-	double start_angle = game->player->angle - (fov / 2) * (M_PI / 180.0); // converte graus para radianos
-	double end_angle = game->player->angle + (fov / 2) * (M_PI / 180.0);
-
-	// Inicializando o comprimento da linha e as coordenadas de início
-	double red_line_length = 550;
-	int x0_red = game->player->line->end.x;
-	int y0_red = game->player->line->end.y;
+	int x0_red = game->player->line->beg.x;
+	int y0_red = game->player->line->beg.y;
 
 	for (double current_angle = start_angle; current_angle <= end_angle; current_angle += angle_increment * (M_PI / 180.0)) {
-		int x1_red = x0_red + red_line_length * cos(current_angle);
-		int y1_red = y0_red - red_line_length * sin(current_angle); // lembre-se, a direção Y é invertida!
+		int x1_red = x0_red + FOV_LENGTH * cos(current_angle);
+		int y1_red = y0_red - FOV_LENGTH * sin(current_angle); // lembre-se, a direção Y é invertida!
 
-		// Definindo a linha
 		game->player->line->beg.x = x0_red;
 		game->player->line->beg.y = y0_red;
 		game->player->line->end.x = x1_red;
 		game->player->line->end.y = y1_red;
-
 		game->player->line->color = 0xFFFF00; // cor vermelha
 
-		// Desenhe a linha no FOV
 		draw_line_fov(game, fov_id);
 		fov_id += angle_increment;
 	}

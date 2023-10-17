@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 15:16:27 by lbiasuz           #+#    #+#             */
-/*   Updated: 2023/10/17 19:40:43 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/17 22:25:51 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 # define PLAYER_H
 
 # define FOV 60
-# define PLAYER_SIZE 4
+# define FOV_LENGTH 550
+# define TURN_SPEED 10
+# define MOVE_SPEED 2
+# define PLAYER_SIZE 0
 
 typedef struct s_point
 {
@@ -24,8 +27,9 @@ typedef struct s_point
 
 typedef struct s_fov_line
 {
-	int	id;
-	int	color;
+	int		id;
+	int		color;
+	double	angle;
 	t_point	beg;
 	t_point	end;
 }	t_fov_line;
