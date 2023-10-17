@@ -9,17 +9,15 @@ SRC_DIR	=	src
 SRC	=	src/main.c						\
 		src/file/check_file_map.c		\
 		src/file/file.c					\
-		src/engine/exit/exit.c			\
-		src/engine/hooks/keys.c			\
+		src/engine/exit.c				\
+		src/engine/keys.c				\
 		src/engine/images/load_images.c \
 		src/engine/images/put_image.c	\
 		src/engine/2D/player.c			\
-		src/engine/2D/player_circle.c	\
 		src/engine/2D/player_line.c		\
 		src/engine/2D/fov.c				\
 		src/map/get_size.c				\
 		src/map/build_map.c				\
-		src/utils/print_map.c			\
 		src/load_game.c					\
 		src/finish_game.c				\
 		src/map/map_utils.c				\

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_image.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 13:35:20 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/14 13:35:21 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/17 01:50:08 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@ void	put_image(t_game *game, int *image, int x, int y)
 	mlx_put_image_to_window(game->engine->mlx,
 		game->engine->window,
 		image,
-		x * MAP_SIZE,
-		y * MAP_SIZE);
+		x * TILE_SIZE,
+		y * TILE_SIZE);
 }

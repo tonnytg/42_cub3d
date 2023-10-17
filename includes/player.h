@@ -6,12 +6,15 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 15:16:27 by lbiasuz           #+#    #+#             */
-/*   Updated: 2023/10/16 22:44:45 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/17 02:54:36 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PLAYER_H
 # define PLAYER_H
+
+# define FOV 60
+# define PLAYER_SIZE 4
 
 typedef struct s_player_fov
 {
@@ -38,29 +41,15 @@ typedef struct s_player_line
 	int color;
 }	t_player_line;
 
-typedef struct s_player_circle
-{
-	int	x_center;
-	int	y_center;
-	int	radius;
-	int	color;
-	int	x;
-	int	y;
-	int	p;
-}	t_player_circle;
-
-
 typedef struct s_player
 {
 	t_player_fov	*fov_line;
 	t_player_line	*line;
-	t_player_circle	*circle;
 	int				x;
 	int				y;
 	float			angle;
 	int				moved;
 	int				collected;
 }	t_player;
-
 
 #endif

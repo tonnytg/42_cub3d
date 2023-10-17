@@ -1,6 +1,6 @@
 /* XPM */
 static char * wall_xpm[] = {
-"16 16 6 1",
+"8 8 6 1",
 " 	c None",
 ".	c #FFE0E0",
 "+	c #FF4040",

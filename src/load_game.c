@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:55:00 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/16 00:09:03 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/17 02:40:29 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	init_game_struct(t_game *game)
 {
 	game->images = ft_calloc(1, sizeof(t_images));
 	game->player = ft_calloc(1, sizeof(t_player));
-	game->player->circle = ft_calloc(1, sizeof(t_player_circle));
 	game->player->line = ft_calloc(1, sizeof(t_player_line));
 	game->player->fov_line = ft_calloc(1, sizeof(t_player_fov));
 	game->map = ft_calloc(1, sizeof(t_map));

@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/16 15:20:09 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/17 02:51:44 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@
 # include <get_next_line.h>
 # include <player.h>
 
-# define MAP_SIZE 16
-# define PLAYER_SIZE 6
+# define TILE_SIZE 8
 
 # define WIDTH 1024
 # define HEIGHT 720
@@ -72,7 +71,6 @@ typedef struct s_game
 	t_engine	*engine;
 	t_images	*images;
 	t_player	*player;
-	int			id;	
 }	t_game;
 
 /* Read Map */
@@ -96,8 +94,6 @@ int		build_map(t_game *game);
 
 /* Player */
 void	put_player(t_game *game, int x, int y);
-void	draw_line(t_game *game);
-void	draw_circle(t_game *game);
 void	calc_line_fov(t_game *game);
 
 /* Core */
@@ -111,8 +107,5 @@ int		key_press(int keycode, t_game *game);
 /* Clean or Exit */
 int		clean_struct(t_game *game);
 void	exit_game(t_game *game);
-
-/* Utils */
-void	print_map_prompt(t_game *game);
 
 #endif
