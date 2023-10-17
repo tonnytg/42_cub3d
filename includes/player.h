@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 15:16:27 by lbiasuz           #+#    #+#             */
-/*   Updated: 2023/10/17 02:54:36 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/17 19:40:43 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,26 @@
 # define FOV 60
 # define PLAYER_SIZE 4
 
-typedef struct s_player_fov
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}	t_point;
+
+typedef struct s_fov_line
 {
 	int	id;
-	int	x0;
-	int	y0;
-	int	x1;
-	int	y1;
 	int	color;
-}	t_player_fov;
+	t_point	beg;
+	t_point	end;
+}	t_fov_line;
 
 typedef struct s_player_line
 {
-	int	x0;
-	int	y0;
-	int	x1;
-	int	y1;
-	int	dx;
-	int	dy;
-	int	sx;
-	int	sy;
+	t_point	beg;
+	t_point	end;
+	t_point	dist;
+	t_point	step;
 	int	err;
 	int	e2;
 	int color;
@@ -43,7 +43,7 @@ typedef struct s_player_line
 
 typedef struct s_player
 {
-	t_player_fov	*fov_line;
+	t_fov_line	*fov_line;
 	t_player_line	*line;
 	int				x;
 	int				y;

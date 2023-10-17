@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 23:30:45 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/17 03:40:32 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/17 19:47:45 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,32 @@
 
 void	set_value_to_draw_line(t_player_line *l)
 {
-	l->dx = abs(l->x1 - l->x0);
-	l->dy = abs(l->y1 - l->y0);
-	if (l->x0 < l->x1)
-		l->sx = 1;
+	l->dist.x = abs(l->end.x - l->beg.x);
+	l->dist.y = abs(l->end.y - l->beg.y);
+	if (l->beg.x < l->end.x)
+		l->step.x = 1;
 	else
-		l->sx = -1;
-	if (l->y0 < l->y1)
-		l->sy = 1;
+		l->step.x = -1;
+	if (l->beg.y < l->end.y)
+		l->step.y = 1;
 	else
-		l->sy = -1;
-	if (l->dx > l->dy)
-		l->err = l->dx / 2;
+		l->step.y = -1;
+	if (l->dist.x > l->dist.y)
+		l->err = l->dist.x / 2;
 	else
-		l->err = -l->dy / 2;
+		l->err = -l->dist.y / 2;
 	l->e2 = 0;
 }
 
 /* Bresenham Algorithms to draw line*/
 /*
-	dx: A diferença absoluta entre as coordenadas x
+	dist.x: A diferença absoluta entre as coordenadas x
 		inicial e final da linha. Representa a largura horizontal da linha.
-	dy: A diferença absoluta entre as coordenadas y
+	dist.y: A diferença absoluta entre as coordenadas y
 		inicial e final da linha. Representa a altura vertical da linha.
-	sx: Direção do passo no eixo x. Pode ser 1
+	step.x: Direção do passo no eixo x. Pode ser 1
 		(para a direita) ou -1 (para a esquerda).
-	sy: Direção do passo no eixo y. Pode ser 1
+	step.y: Direção do passo no eixo y. Pode ser 1
 		(para cima) ou -1 (para baixo).
 	err: O erro acumulado ao desenhar a linha.
 		É usado para determinar quando mover
@@ -56,19 +56,19 @@ void	draw_line(t_game *game)
 	while (1)
 	{
 		mlx_pixel_put(game->engine->mlx,
-			game->engine->window, l->x0, l->y0, game->player->line->color);
-		if (l->x0 == l->x1 && l->y0 == l->y1)
+			game->engine->window, l->beg.x, l->beg.y, game->player->line->color);
+		if (l->beg.x == l->end.x && l->beg.y == l->end.y)
 			break ;
 		l->e2 = l->err;
-		if (l->e2 > -l->dx)
+		if (l->e2 > -l->dist.x)
 		{
-			l->err -= l->dy;
-			l->x0 += l->sx;
+			l->err -= l->dist.y;
+			l->beg.x += l->step.x;
 		}
-		if (l->e2 < l->dy)
+		if (l->e2 < l->dist.y)
 		{
-			l->err += l->dx;
-			l->y0 += l->sy;
+			l->err += l->dist.x;
+			l->beg.y += l->step.y;
 		}
 	}
 }
@@ -83,7 +83,7 @@ void draw_box(t_game *game, int fov_id, int line_length)
 		y = (game->engine->height / 2) - (line_length / 2);
 		while (y < line_length)
 		{
-			mlx_pixel_put(game->engine->mlx, game->engine->window, x, y, 0x0000FF);
+			mlx_pixel_put(game->engine->mlx, game->engine->window, x, y, 0x000FF);
 			y++;
 		}
 		x++;
@@ -98,11 +98,11 @@ void draw_line_fov(t_game *game, double fov_id)
 
 	while (1)
 	{
-		if (l->x0 == l->x1 && l->y0 == l->y1)
+		if (l->beg.x == l->end.x && l->beg.y == l->end.y)
 			break;
 
-		int map_x = l->x0 / TILE_SIZE;
-		int map_y = l->y0 / TILE_SIZE;
+		int map_x = l->beg.x / TILE_SIZE;
+		int map_y = l->beg.y / TILE_SIZE;
 
 		if (map_x >= 0 && map_x < game->map->columns && map_y >= 0 && map_y < game->map->lines)
 		{
@@ -110,24 +110,24 @@ void draw_line_fov(t_game *game, double fov_id)
 			{
 				draw_box(game, fov_id, (game->engine->height / 2) -line_length);
 				printf("houve colisão!\n");
-				printf("x0: %d\n", l->x0);
-				printf("y0: %d\n", l->y0);
+				printf("beg.x: %d\n", l->beg.x);
+				printf("beg.y: %d\n", l->beg.y);
 				break;
 			}
 		}
 		line_length++;
 
-		mlx_pixel_put(game->engine->mlx, game->engine->window, l->x0, l->y0, game->player->line->color);
+		mlx_pixel_put(game->engine->mlx, game->engine->window, l->beg.x, l->beg.y, game->player->line->color);
 
 		l->e2 = l->err;
 
-		if (l->e2 > -l->dx) {
-			l->err -= l->dy;
-			l->x0 += l->sx;
+		if (l->e2 > -l->dist.x) {
+			l->err -= l->dist.y;
+			l->beg.x += l->step.x;
 		}
-		if (l->e2 < l->dy) {
-			l->err += l->dx;
-			l->y0 += l->sy;
+		if (l->e2 < l->dist.y) {
+			l->err += l->dist.x;
+			l->beg.y += l->step.y;
 		}
 	}
 }
@@ -143,18 +143,18 @@ void calc_line_fov(t_game *game)
 
 	// Inicializando o comprimento da linha e as coordenadas de início
 	double red_line_length = 550;
-	int x0_red = game->player->line->x1;
-	int y0_red = game->player->line->y1;
+	int x0_red = game->player->line->end.x;
+	int y0_red = game->player->line->end.y;
 
 	for (double current_angle = start_angle; current_angle <= end_angle; current_angle += angle_increment * (M_PI / 180.0)) {
 		int x1_red = x0_red + red_line_length * cos(current_angle);
 		int y1_red = y0_red - red_line_length * sin(current_angle); // lembre-se, a direção Y é invertida!
 
 		// Definindo a linha
-		game->player->line->x0 = x0_red;
-		game->player->line->y0 = y0_red;
-		game->player->line->x1 = x1_red;
-		game->player->line->y1 = y1_red;
+		game->player->line->beg.x = x0_red;
+		game->player->line->beg.y = y0_red;
+		game->player->line->end.x = x1_red;
+		game->player->line->end.y = y1_red;
 
 		game->player->line->color = 0xFFFF00; // cor vermelha
 
