@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 15:16:27 by lbiasuz           #+#    #+#             */
-/*   Updated: 2023/10/17 22:25:51 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/19 06:00:06 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,28 +27,20 @@ typedef struct s_point
 
 typedef struct s_fov_line
 {
-	int		id;
-	int		color;
-	double	angle;
-	t_point	beg;
-	t_point	end;
-}	t_fov_line;
-
-typedef struct s_player_line
-{
 	t_point	beg;
 	t_point	end;
 	t_point	dist;
 	t_point	step;
+	long line_length;
+	double	angle;
 	int	err;
 	int	e2;
 	int color;
-}	t_player_line;
+}	t_fov_line;
 
 typedef struct s_player
 {
-	t_fov_line	*fov_line;
-	t_player_line	*line;
+	t_fov_line		line[FOV];
 	int				x;
 	int				y;
 	float			angle;

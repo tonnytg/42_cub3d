@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 13:35:12 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/17 19:44:43 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/19 06:19:47 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,17 @@
 
 void	put_player(t_game *game, int x, int y)
 {
-	int	radius;
-	int	line_length;
-	int	end_x;
-	int	end_y;
-
-	radius = PLAYER_SIZE / 2;
-	line_length = radius + 10;
-	end_x = x * 2 + radius + line_length * cos(game->player->angle);
-	end_y = y * 2 + radius - line_length * sin(game->player->angle);
-	game->player->line->beg.x = x * 2 + radius;
-	game->player->line->beg.y = y * 2 + radius;
-	game->player->line->end.x = end_x;
-	game->player->line->end.y = end_y;
+	for (int index = 0; index < FOV; index++)
+	{
+		game->player->line[index].line_length = 0;
+		game->player->line[index].beg.x = x;
+		game->player->line[index].beg.y = y;
+		game->player->line[index].end.x = x * 2 + 10 * cos(game->player->angle);
+		game->player->line[index].end.y = y * 2 - 10 * sin(game->player->angle);
+	}
 	game->player->x = x;
 	game->player->y = y;
 	calc_line_fov(game);
+	for (int index = 0; index < FOV; index++)
+		draw_box(game, index, (game->engine->height / 2 - game->player->line[index].line_length * cos(game->player->angle - game->player->line[index].angle)));
 }
