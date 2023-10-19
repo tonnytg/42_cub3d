@@ -6,60 +6,46 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 15:16:27 by lbiasuz           #+#    #+#             */
-/*   Updated: 2023/10/16 15:17:58 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/19 06:00:06 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PLAYER_H
 # define PLAYER_H
 
-typedef struct s_player_fov
-{
-	int	x0;
-	int	y0;
-	int	x1;
-	int	y1;
-	int	color;
-}	t_player_fov;
+# define FOV 60
+# define FOV_LENGTH 550
+# define TURN_SPEED 10
+# define MOVE_SPEED 2
+# define PLAYER_SIZE 0
 
-typedef struct s_player_line
+typedef struct s_point
 {
-	int	x0;
-	int	y0;
-	int	x1;
-	int	y1;
-	int	dx;
-	int	dy;
-	int	sx;
-	int	sy;
+	int	x;
+	int	y;
+}	t_point;
+
+typedef struct s_fov_line
+{
+	t_point	beg;
+	t_point	end;
+	t_point	dist;
+	t_point	step;
+	long line_length;
+	double	angle;
 	int	err;
 	int	e2;
 	int color;
-}	t_player_line;
-
-typedef struct s_player_circle
-{
-	int	x_center;
-	int	y_center;
-	int	radius;
-	int	color;
-	int	x;
-	int	y;
-	int	p;
-}	t_player_circle;
-
+}	t_fov_line;
 
 typedef struct s_player
 {
-	t_player_fov	*fov_line;
-	t_player_line	*line;
-	t_player_circle	*circle;
+	t_fov_line		line[FOV];
 	int				x;
 	int				y;
 	float			angle;
 	int				moved;
 	int				collected;
 }	t_player;
-
 
 #endif
