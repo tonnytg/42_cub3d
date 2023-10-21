@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/18 23:29:28 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/21 21:03:36 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@
 # include <get_next_line.h>
 # include <player.h>
 
-# define TILE_SIZE 8
+# define TILE_SIZE 64
+# define TILE_DP 6
 
 # define WIDTH 1024
 # define HEIGHT 720
@@ -109,7 +110,7 @@ int		clean_struct(t_game *game);
 void	exit_game(t_game *game);
 
 // Draw
-void calc_fov_line_distance(t_game *game, int fov_id);
+void calc_fov_line_distance(t_game *game, t_fov_line *l);
 void draw_box(t_game *game, int fov_id, int line_length);
 
 #endif
