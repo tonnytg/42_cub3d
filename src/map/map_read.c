@@ -6,22 +6,29 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:38:54 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/15 23:42:23 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/22 14:03:58 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-int	is_config_line(char	*line)
+int	is_config_line(t_game *game, char	*line)
 {
-	if (!ft_strncmp(line, "NO ", 3)
-		|| !ft_strncmp(line, "SO ", 3)
-		|| !ft_strncmp(line, "WE ", 3)
-		|| !ft_strncmp(line, "EA ", 3)
-		|| !ft_strncmp(line, "F ", 2)
-		|| !ft_strncmp(line, "C ", 2))
-		return (1);
-	return (0);
+	if (!ft_strncmp(line, "NO ", 3))
+		load_custom_images(game, line, "NO");
+	else if (!ft_strncmp(line, "SO ", 3))
+		load_custom_images(game, line, "SO");
+	else if (!ft_strncmp(line, "WE ", 3))
+		load_custom_images(game, line, "WE");
+	else if (!ft_strncmp(line, "EA ", 3))
+		load_custom_images(game, line, "EA");
+	else if (!ft_strncmp(line, "F ", 2))
+		load_custom_color(game, line, "F");
+	else if (!ft_strncmp(line, "C ", 2))
+		load_custom_color(game, line, "C");
+	else
+		return (0);
+	return (1);
 }
 
 int	find_biggest_row_size(char **grid)
@@ -99,7 +106,7 @@ int	read_map(t_game *game)
 	while (line)
 	{
 		count_columns(line, &game->map->columns);
-		if (!is_config_line(line) && line[0] != '\n')
+		if (!is_config_line(game, line) && line[0] != '\n')
 			return (parse_map_file(game, line));
 		free(line);
 		line = get_next_line(game->map->fd);

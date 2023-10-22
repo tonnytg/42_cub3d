@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:38:24 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/19 05:59:33 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/21 17:11:11 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	render_map_2d(t_game *game)
 {
 	mlx_clear_window(game->engine->mlx, game->engine->window);
+	// draw_background(game);
 	build_map(game);
 	put_player(game, game->player->x, game->player->y);
 }

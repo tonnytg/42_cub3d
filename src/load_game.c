@@ -15,10 +15,13 @@
 int	init_game_struct(t_game *game)
 {
 	game->images = ft_calloc(1, sizeof(t_images));
+	load_default_colors(game);
+	load_default_images(game);
 	game->player = ft_calloc(1, sizeof(t_player));
 	game->map = ft_calloc(1, sizeof(t_map));
 	if (game->map == NULL)
 		return (1);
+	game->map->background = ft_calloc(1, sizeof(t_game_background));
 	game->engine = ft_calloc(1, sizeof(t_engine));
 	if (game->engine == NULL)
 		return (1);

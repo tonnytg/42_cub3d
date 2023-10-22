@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:38:30 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/15 23:58:38 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/22 14:06:09 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	exit_game(t_game *game)
 {
-	mlx_destroy_image(game->engine->mlx, game->images->wall);
+	destroy_images(game);
 	mlx_destroy_window(game->engine->mlx, game->engine->window);
 	mlx_destroy_display(game->engine->mlx);
 	if (game->engine->mlx)
