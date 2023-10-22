@@ -26,7 +26,7 @@
 # include <get_next_line.h>
 # include <player.h>
 
-# define TILE_SIZE 64
+# define TILE_SIZE 8
 # define TILE_DP 6
 
 # define WIDTH 1024
@@ -65,6 +65,7 @@ typedef struct s_images
 	char	*wall_we_path;
 	void	*wall_ea;
 	char	*wall_ea_path;
+	void	*player;
 	int		floor_color;
 	int		sky_color;
 	int		width;
@@ -104,6 +105,7 @@ typedef struct s_game
 	t_engine	*engine;
 	t_images	*images;
 	t_player	*player;
+	int			i;
 }	t_game;
 
 /* Libs */
@@ -149,6 +151,10 @@ int		key_press(int keycode, t_game *game);
 void	destroy_images(t_game *game);
 int		clean_struct(t_game *game);
 void	exit_game(t_game *game);
+
+/* Render Game */
+int		render_game(t_game *game);
+
 
 // Draw
 void	calc_fov_line_distance(t_game *game, t_fov_line *l);

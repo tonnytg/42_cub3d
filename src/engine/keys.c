@@ -12,16 +12,9 @@
 
 #include <cub3D.h>
 
-void	render_map_2d(t_game *game)
-{
-	mlx_clear_window(game->engine->mlx, game->engine->window);
-	draw_background(game);
-	build_map(game);
-	// put_player(game, game->player->x, game->player->y);
-}
-
 int	key_press(int keycode, t_game *game)
 {
+	game->i++;
 	if (keycode == ESC)
 		exit_game(game);
 	else if (keycode == UP || keycode == UP2)
@@ -46,6 +39,6 @@ int	key_press(int keycode, t_game *game)
 		printf("key left pressed\n");
 		game->player->angle -= TURN_SPEED;
 	}
-	render_map_2d(game);
+	// render_map_2d(game);
 	return (0);
 }
