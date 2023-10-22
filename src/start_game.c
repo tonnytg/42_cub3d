@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:53:48 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/19 05:19:55 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/21 17:11:15 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_game	*start_game(t_game *game)
 			game->engine->height,
 			"cub3D");
 	load_images(game);
+	draw_background(game);
 	mlx_hook(game->engine->window, 17, 0, (void *)exit_game, game);
 	mlx_hook(game->engine->window, 2, 1L << 0, key_press, game);
 	mlx_loop(game->engine->mlx);

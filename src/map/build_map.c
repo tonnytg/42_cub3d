@@ -24,7 +24,7 @@ int	build_map(t_game *game)
 		while (column < game->map->columns)
 		{
 			if (game->map->grid[line][column] == '1')
-				put_image(game, game->images->wall, column, line);
+				put_image(game, game->images->wall_no, column, line);
 			column++;
 		}
 		line++;
