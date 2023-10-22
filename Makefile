@@ -6,22 +6,26 @@ HEAD_DIR=	includes libs/libft
 OBJ_DIR	=	bin
 SRC_DIR	=	src
 
-SRC	=	src/main.c						\
-		src/file/check_file_map.c		\
-		src/file/file.c					\
-		src/engine/exit.c				\
-		src/engine/keys.c				\
-		src/engine/images/load_images.c \
-		src/engine/images/put_image.c	\
-		src/engine/2D/player.c			\
-		src/engine/2D/draw.c			\
-		src/engine/raycast/fov.c		\
-		src/map/build_map.c				\
-		src/load_game.c					\
-		src/finish_game.c				\
-		src/map/map_utils.c				\
-		src/map/map_read.c				\
-		src/map/map_check.c				\
+SRC	=	src/main.c								\
+		src/file/check_file_map.c				\
+		src/file/file.c							\
+		src/engine/exit.c						\
+		src/engine/keys.c						\
+		src/engine/2D/player.c					\
+		src/engine/2D/draw.c					\
+		src/engine/raycast/fov.c				\
+		src/engine/background.c					\
+		src/map/build_map.c						\
+		src/map/images/load_default_images.c 	\
+		src/map/images/load_custom_images.c 	\
+		src/map/images/load_images.c 			\
+		src/map/images/put_image.c				\
+		src/map/color/color.c					\
+		src/load_game.c							\
+		src/finish_game.c						\
+		src/map/map_utils.c						\
+		src/map/map_read.c						\
+		src/map/map_check.c						\
 		src/start_game.c
 
 OBJ	=	$(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
