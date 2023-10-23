@@ -74,6 +74,52 @@ int	normalize_map_size(char **grid)
 	return (1);
 }
 
+double get_player_angle(char *player_position)
+{
+    if (player_position[0] == 'N')
+        return (270);
+    else if (player_position[0] == 'S')
+        return (90);
+    else if (player_position[0] == 'E')
+        return (0);
+    else if (player_position[0] == 'W')
+        return (180);
+    return (0);
+}
+
+
+int	discover_player_position(t_game *game)
+{
+	int		index;
+	int		jndex;
+	char	*player_position;
+
+	printf("procurando pelo player\n");
+	index = 0;
+	while (game->map->grid[index])
+	{
+		jndex = 0;
+		while (game->map->grid[index][jndex])
+		{
+			if (ft_strchr("NSEW", game->map->grid[index][jndex]))
+			{
+				
+				player_position = ft_calloc(2, 1);
+				player_position[0] = game->map->grid[index][jndex];
+				game->player->angle = get_player_angle(player_position);
+				game->player->x = jndex * TILE_SIZE;
+				game->player->y = index * TILE_SIZE;
+				printf("achei o player em %d %d\n", index, jndex);
+				free(player_position);
+				return (1);
+			}
+			jndex++;
+		}
+		index++;
+	}
+	return (0);
+}
+
 int	parse_map_file(t_game *game, char *line)
 {
 	char	*full_map;
@@ -95,6 +141,7 @@ int	parse_map_file(t_game *game, char *line)
 	if (full_map[0] != 0)
 		free(full_map);
 	normalize_map_size(game->map->grid);
+	discover_player_position(game);
 	return (0);
 }
 
@@ -113,5 +160,6 @@ int	read_map(t_game *game)
 		game->map->lines++;
 	}
 	free(line);
+	discover_player_position(game);
 	return (0);
 }

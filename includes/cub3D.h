@@ -27,6 +27,7 @@
 # include <player.h>
 
 # define TILE_SIZE 8
+# define TILE_DP 6
 
 # define WIDTH 1024
 # define HEIGHT 720
@@ -64,6 +65,7 @@ typedef struct s_images
 	char	*wall_we_path;
 	void	*wall_ea;
 	char	*wall_ea_path;
+	void	*player;
 	int		floor_color;
 	int		sky_color;
 	int		width;
@@ -103,6 +105,7 @@ typedef struct s_game
 	t_engine	*engine;
 	t_images	*images;
 	t_player	*player;
+	int			i;
 }	t_game;
 
 /* Libs */
@@ -133,7 +136,8 @@ void	put_image(t_game *game, int *image, int x, int y);
 int		build_map(t_game *game);
 
 /* Player */
-void	put_player(t_game *game, int x, int y);
+// void	put_player(t_game *game, int x, int y);
+void	put_player(t_game *game);
 void	calc_line_fov(t_game *game);
 
 /* Core */
@@ -149,7 +153,12 @@ void	destroy_images(t_game *game);
 int		clean_struct(t_game *game);
 void	exit_game(t_game *game);
 
+/* Render Game */
+int		render_game(t_game *game);
+
+
 // Draw
+// void	calc_fov_line_distance(t_game *game, t_fov_line *l);
 void	calc_fov_line_distance(t_game *game, int fov_id);
 void	draw_box(t_game *game, int fov_id, int line_length);
 int		draw_background(t_game *game);

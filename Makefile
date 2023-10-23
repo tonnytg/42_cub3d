@@ -13,13 +13,16 @@ SRC	=	src/main.c								\
 		src/engine/keys.c						\
 		src/engine/2D/player.c					\
 		src/engine/2D/draw.c					\
-		src/engine/raycast/fov.c				\
+		src/engine/2D/map/build_map.c			\
+		src/engine/2D/images/put_image.c		\
+		src/engine/3D/raycast/fov.c				\
+		src/engine/3D/dda/dda.c					\
 		src/engine/background.c					\
-		src/map/build_map.c						\
+		src/engine/3D/raycast/raycast.c			\
+		src/engine/render/render.c				\
 		src/map/images/load_default_images.c 	\
 		src/map/images/load_custom_images.c 	\
 		src/map/images/load_images.c 			\
-		src/map/images/put_image.c				\
 		src/map/color/color.c					\
 		src/load_game.c							\
 		src/finish_game.c						\
