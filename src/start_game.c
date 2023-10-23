@@ -26,7 +26,6 @@ t_game	*start_game(t_game *game)
 			game->engine->height,
 			"cub3D");
 	load_images(game);
-
 	mlx_loop_hook(game->engine->mlx, render_game, game);
 	mlx_hook(game->engine->window, 17, 0, (void *)exit_game, game);
 	mlx_hook(game->engine->window, 2, 1L << 0, key_press, game);

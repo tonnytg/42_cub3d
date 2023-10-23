@@ -14,28 +14,20 @@
 
 int	render_game(t_game *game)
 {
-	// mlx_clear_window(game->engine->mlx, game->engine->window);
-	// build_map(game);
-	// put_player(game, game->player->x, game->player->y);
 	draw_background(game);
-	// game->engine->dda->pixel = 0;
-	// while (1)
-	//{
-		// inicializa a camera
+	// inicializa a camera
 
-		// initializa raydir e delta
+	// initializa raydir e delta
 
-		// inicializa distancia para lado
+	// inicializa distancia para lado
 
-		// calcula o DDA
+	// calcula o DDA
 
-		// inicializa perpendicular
+	// inicializa perpendicular
 
-		// calcula raycasting
+	// calcula raycasting
 
-		// game->engine->dda->pixel++;
-	//}
-	//mlx_put_image_to_window(game->engine->mlx, game->engine->window, game->engine->img, 0, 0);
+	// game->engine->dda->pixel++;
 	
 	return (0);
 }

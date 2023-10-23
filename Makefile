@@ -17,7 +17,7 @@ SRC	=	src/main.c								\
 		src/engine/2D/images/put_image.c		\
 		src/engine/3D/raycast/fov.c				\
 		src/engine/3D/dda/dda.c					\
-		src/engine/3D/background.c				\
+		src/engine/background.c					\
 		src/engine/3D/raycast/raycast.c			\
 		src/engine/render/render.c				\
 		src/map/images/load_default_images.c 	\

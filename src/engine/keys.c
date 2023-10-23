@@ -39,6 +39,5 @@ int	key_press(int keycode, t_game *game)
 		printf("key left pressed\n");
 		game->player->angle -= TURN_SPEED;
 	}
-	// render_map_2d(game);
 	return (0);
 }

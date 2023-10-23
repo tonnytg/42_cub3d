@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include <cub3D.h>
-
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
@@ -78,11 +77,8 @@ int	draw_background(t_game *game)
 	t_game_background	*b;
 
 	b = game->map->background;
-	printf("draw background floor\n");
 	draw_floor(game);
-	printf("draw background sky\n");
 	draw_sky(game);
-	printf("draw background done\n");
 	mlx_destroy_image(game->engine->mlx, b->floor.img);
 	mlx_destroy_image(game->engine->mlx, b->sky.img);
 	return (0);
