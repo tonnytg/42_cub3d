@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 01:22:26 by lbiasuz           #+#    #+#             */
-/*   Updated: 2023/10/19 06:09:09 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/23 21:01:13 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void calc_line_fov(t_game *game) {
     double start_angle, end_angle, angle_increment;
     t_fov_line *l;
 
-    start_angle = game->player->angle - (FOV / 2) * (M_PI / 180.0);
-    end_angle = game->player->angle + (FOV / 2) * (M_PI / 180.0);
+    start_angle = game->player->angle * (M_PI / 180.0) - (FOV / 2) * (M_PI / 180.0);
+    end_angle = game->player->angle * (M_PI / 180.0) + (FOV / 2) * (M_PI / 180.0);
     angle_increment = (double)FOV / FOV * (M_PI / 180.0); // Adicionado
-    
+
     start_angle = fmod(start_angle + 2 * M_PI, 2 * M_PI);
     end_angle = fmod(end_angle + 2 * M_PI, 2 * M_PI);
 
@@ -31,7 +31,7 @@ void calc_line_fov(t_game *game) {
         l->end.y = l->beg.y + FOV_LENGTH * sin(start_angle);
         l->color = 0xFFFF00;
         calc_fov_line_distance(game, fov_id);
-        start_angle += angle_increment;  // Usando o incremento de ângulo calculado
+        start_angle += angle_increment;
 
         start_angle = fmod(start_angle + 2 * M_PI, 2 * M_PI);
         fov_id++;
@@ -70,11 +70,9 @@ void calc_fov_line_distance(t_game *game, int fov_id)
 		if (map_x >= 0 && map_x < game->map->columns && map_y >= 0
 			&& map_y < game->map->lines && game->map->grid[map_y][map_x] == '1')
 		{
-			// printf("houve colisão!\n beg.x: %d\n beg.y: %d\n", l->beg.x, l->beg.y);
 			break;
 		}
 		l->line_length++;
-		// mlx_pixel_put(game->engine->mlx, game->engine->window, l->beg.x, l->beg.y, game->player->line->color);
 		l->e2 = l->err;
 		if (l->e2 > -l->dist.x) {
 			l->err -= l->dist.y;
