@@ -19,19 +19,17 @@ double	ft_abs(double number)
 	return (number);
 }
 
-void	put_player(t_game *game, int x, int y)
+void	put_player(t_game *game)
 {
 	for (int index = 0; index < FOV; index++)
 	{
 		game->player->line[index].line_length = 0;
-		game->player->line[index].beg.x = x;
-		game->player->line[index].beg.y = y;
-		game->player->line[index].end.x = x * 2 + 10 * cos(game->player->angle);
-		game->player->line[index].end.y = y * 2 - 10 * sin(game->player->angle);
+		game->player->line[index].beg.x = game->player->x;
+		game->player->line[index].beg.y = game->player->y;
+		game->player->line[index].end.x = game->player->x * 2 + 10 * cos(game->player->angle);
+		game->player->line[index].end.y = game->player->y * 2 - 10 * sin(game->player->angle);
 	}
-	game->player->x = x;
-	game->player->y = y;
 	calc_line_fov(game);
 	for (int index = 0; index < FOV; index++)
-		draw_box(game, index, (game->engine->height - (game->player->line[index].line_length)) / cos((game->player->angle - game->player->line[index].angle)));
+		draw_box(game, index, (game->engine->height / 2 - game->player->line[index].line_length * cos(game->player->angle - game->player->line[index].angle)));
 }

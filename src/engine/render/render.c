@@ -70,7 +70,20 @@ int	render_game(t_game *game)
     int end_y = game->player->y + line_length * sin(game->player->angle * (M_PI / 180.0));
     draw_line(game, game->player->x, game->player->y, end_x, end_y, 0xFF0000);  // Linha em vermelho
 
+	put_player(game);
 
+	    // 2. Calcule o FOV
+    calc_line_fov(game);
+    
+    // 3. Para cada linha no FOV
+    for (int fov_id = 0; fov_id < FOV; fov_id++)
+    {
+        // Calcule a distância até a parede
+        calc_fov_line_distance(game, fov_id);
+
+        // 4. Renderize a parede na tela
+        draw_box(game, fov_id, game->player->line[fov_id].line_length);
+    }
 
 	// inicializa a camera
 

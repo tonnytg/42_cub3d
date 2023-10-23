@@ -32,7 +32,7 @@
 # define WIDTH 1024
 # define HEIGHT 720
 
-# define DEFAULT_SKY_COLOR 0x0000FF
+# define DEFAULT_SKY_COLOR 0xADD8E6
 # define DEFAULT_FLOOR_COLOR 0x808080
 
 # define ESC 65307
@@ -136,7 +136,8 @@ void	put_image(t_game *game, int *image, int x, int y);
 int		build_map(t_game *game);
 
 /* Player */
-void	put_player(t_game *game, int x, int y);
+// void	put_player(t_game *game, int x, int y);
+void	put_player(t_game *game);
 void	calc_line_fov(t_game *game);
 
 /* Core */
@@ -157,7 +158,8 @@ int		render_game(t_game *game);
 
 
 // Draw
-void	calc_fov_line_distance(t_game *game, t_fov_line *l);
+// void	calc_fov_line_distance(t_game *game, t_fov_line *l);
+void	calc_fov_line_distance(t_game *game, int fov_id);
 void	draw_box(t_game *game, int fov_id, int line_length);
 int		draw_background(t_game *game);
 
