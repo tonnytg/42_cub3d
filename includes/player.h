@@ -15,9 +15,9 @@
 
 # define FOV 60
 # define FOV_LENGTH 550
-# define TURN_SPEED 10
-# define MOVE_SPEED 4
-# define PLAYER_SIZE 0
+# define TURN_SPEED 45
+# define MOVE_SPEED 2
+# define PLAYER_SIZE 2
 
 typedef struct s_point
 {

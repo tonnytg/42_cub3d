@@ -12,9 +12,66 @@
 
 #include <cub3D.h>
 
+void draw_circle(t_game *game, int x, int y, int r, int color)
+{
+	int i;
+	int j;
+	for (i = x - r; i < x + r; i++)
+	{
+		for (j = y - r; j < y + r; j++)
+		{
+			if ((i - x) * (i - x) + (j - y) * (j - y) < r * r)
+			{
+				mlx_pixel_put(game->engine->mlx, game->engine->window, i, j, color);
+			}
+		}
+	}
+}
+
+void draw_line(t_game *game, int x0, int y0, int x1, int y1, int color)
+{
+	int dx = abs(x1 - x0);
+	int dy = abs(y1 - y0);
+	int sx = x0 < x1 ? 1 : -1;
+	int sy = y0 < y1 ? 1 : -1;
+	int err = (dx > dy ? dx : -dy) / 2;
+	int e2;
+
+	while (1)
+	{
+		mlx_pixel_put(game->engine->mlx, game->engine->window, x0, y0, color);
+		if (x0 == x1 && y0 == y1)
+			break;
+		e2 = err;
+		if (e2 > -dx)
+		{
+			err -= dy;
+			x0 += sx;
+		}
+		if (e2 < dy)
+		{
+			err += dx;
+			y0 += sy;
+		}
+	}
+}
+
 int	render_game(t_game *game)
 {
 	draw_background(game);
+
+	build_map(game);
+    // Desenhar o player
+    draw_circle(game, game->player->x, game->player->y, PLAYER_SIZE, 0xFFFFFF);  // Player como um círculo branco
+    
+    // Direção do player
+    int line_length = 6;  // Ou qualquer comprimento desejado para a linha
+    int end_x = game->player->x + line_length * cos(game->player->angle * (M_PI / 180.0));
+    int end_y = game->player->y + line_length * sin(game->player->angle * (M_PI / 180.0));
+    draw_line(game, game->player->x, game->player->y, end_x, end_y, 0xFF0000);  // Linha em vermelho
+
+
+
 	// inicializa a camera
 
 	// initializa raydir e delta
