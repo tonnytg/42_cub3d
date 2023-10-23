@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:29:54 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/22 20:29:55 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/23 21:17:33 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,30 +60,30 @@ int	render_game(t_game *game)
 {
 	draw_background(game);
 
-	build_map(game);
-    // Desenhar o player
-    draw_circle(game, game->player->x, game->player->y, PLAYER_SIZE, 0xFFFFFF);  // Player como um círculo branco
-    
-    // Direção do player
-    int line_length = 6;  // Ou qualquer comprimento desejado para a linha
-    int end_x = game->player->x + line_length * cos(game->player->angle * (M_PI / 180.0));
-    int end_y = game->player->y + line_length * sin(game->player->angle * (M_PI / 180.0));
-    draw_line(game, game->player->x, game->player->y, end_x, end_y, 0xFF0000);  // Linha em vermelho
+	// Desenhar o player
+	draw_circle(game, game->player->x, game->player->y, PLAYER_SIZE, 0xFFFFFF);  // Player como um círculo branco
+		
+	// Direção do player
+	int line_length = 6;  // Ou qualquer comprimento desejado para a linha
+	int end_x = game->player->x + line_length * cos(game->player->angle * (M_PI / 180.0));
+	int end_y = game->player->y + line_length * sin(game->player->angle * (M_PI / 180.0));
+	draw_line(game, game->player->x, game->player->y, end_x, end_y, 0xFF0000);  // Linha em vermelho
 
 	put_player(game);
+	build_map(game);
 
-	    // 2. Calcule o FOV
-    calc_line_fov(game);
-    
-    // 3. Para cada linha no FOV
-    for (int fov_id = 0; fov_id < FOV; fov_id++)
-    {
-        // Calcule a distância até a parede
-        calc_fov_line_distance(game, fov_id);
+		// 2. Calcule o FOV
+	calc_line_fov(game);
+		
+	// 3. Para cada linha no FOV
+	for (int fov_id = 0; fov_id < FOV; fov_id++)
+	{
+		// Calcule a distância até a parede
+		calc_fov_line_distance(game, fov_id);
 
-        // 4. Renderize a parede na tela
-        draw_box(game, fov_id, game->player->line[fov_id].line_length);
-    }
+		// 4. Renderize a parede na tela
+		draw_box(game, fov_id, game->player->line[fov_id].line_length / 3);
+	}
 
 	// inicializa a camera
 

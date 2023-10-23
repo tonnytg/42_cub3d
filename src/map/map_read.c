@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_read.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:38:54 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/22 14:03:58 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/23 21:18:05 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ int	discover_player_position(t_game *game)
 	int		jndex;
 	char	*player_position;
 
-	printf("procurando pelo player\n");
 	index = 0;
 	while (game->map->grid[index])
 	{
@@ -109,7 +108,6 @@ int	discover_player_position(t_game *game)
 				game->player->angle = get_player_angle(player_position);
 				game->player->x = jndex * TILE_SIZE;
 				game->player->y = index * TILE_SIZE;
-				printf("achei o player em %d %d\n", index, jndex);
 				free(player_position);
 				return (1);
 			}

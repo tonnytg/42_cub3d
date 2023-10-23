@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 15:16:27 by lbiasuz           #+#    #+#             */
-/*   Updated: 2023/10/21 15:58:15 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/23 21:19:52 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # define FOV 60
 # define FOV_LENGTH 550
-# define TURN_SPEED 45
-# define MOVE_SPEED 2
+# define TURN_SPEED 2
+# define MOVE_SPEED 5
 # define PLAYER_SIZE 2
 
 typedef struct s_point
