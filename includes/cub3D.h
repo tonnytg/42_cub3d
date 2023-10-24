@@ -119,6 +119,8 @@ int		is_invalid_arguments(int argc, char **argv);
 int		is_invalid_map(int argc, char **argv);
 int		read_map(t_game *game);
 int		verify_grid(char **grid);
+double	get_player_angle(char *player_position);
+int		discover_player_position(t_game *game);
 
 /* 2D */
 void	set_value_to_draw_line(t_fov_line *l);

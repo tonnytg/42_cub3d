@@ -23,6 +23,7 @@ SRC	=	src/main.c								\
 		src/map/images/load_default_images.c 	\
 		src/map/images/load_custom_images.c 	\
 		src/map/images/load_images.c 			\
+		src/map/map_player.c					\
 		src/map/color/color.c					\
 		src/load_game.c							\
 		src/finish_game.c						\
