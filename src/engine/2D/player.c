@@ -12,13 +12,6 @@
 
 #include <cub3D.h>
 
-double	ft_abs(double number)
-{
-	if (number < 0)
-		return (number * -1);
-	return (number);
-}
-
 void	put_player(t_game *game)
 {
 	int	index;

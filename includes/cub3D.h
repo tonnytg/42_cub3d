@@ -57,14 +57,32 @@ typedef struct s_data
 
 typedef struct s_images
 {
+	void	*wall_2d;
+	char	*wall_2d_path;
 	void	*wall_no;
 	char	*wall_no_path;
+    char    *wall_no_addr;  // Novo
+    int     wall_no_bpp;    // Novo
+    int     wall_no_line_len; // Novo
+    int     wall_no_endian;   // Novo	
 	void	*wall_so;
 	char	*wall_so_path;
+    char    *wall_so_addr;  // Novo
+    int     wall_so_bpp;    // Novo
+    int     wall_so_line_len; // Novo
+    int     wall_so_endian;   // Novo	
 	void	*wall_we;
 	char	*wall_we_path;
+    char    *wall_we_addr;  // Novo
+    int     wall_we_bpp;    // Novo
+    int     wall_we_line_len; // Novo
+    int     wall_we_endian;   // Novo	
 	void	*wall_ea;
 	char	*wall_ea_path;
+    char    *wall_ea_addr;  // Novo
+    int     wall_ea_bpp;    // Novo
+    int     wall_ea_line_len; // Novo
+    int     wall_ea_endian;   // Novo	
 	void	*player;
 	int		floor_color;
 	int		sky_color;
