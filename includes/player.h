@@ -27,16 +27,16 @@ typedef struct s_point
 
 typedef struct s_fov_line
 {
-	int	id;
+	int		d;
 	t_point	beg;
 	t_point	end;
 	t_point	dist;
 	t_point	step;
 	double	line_length;
-	int	angle;
-	int	err;
-	int	e2;
-	int color;
+	int		angle;
+	int		err;
+	int		e2;
+	int		color;
 }	t_fov_line;
 
 typedef struct s_player

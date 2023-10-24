@@ -119,6 +119,8 @@ int		is_invalid_arguments(int argc, char **argv);
 int		is_invalid_map(int argc, char **argv);
 int		read_map(t_game *game);
 int		verify_grid(char **grid);
+double	get_player_angle(char *player_position);
+int		discover_player_position(t_game *game);
 
 /* 2D */
 void	set_value_to_draw_line(t_fov_line *l);
@@ -131,12 +133,10 @@ int		load_default_colors(t_game *game);
 int		load_custom_color(t_game *game, char *line, char *config);
 void	put_image(t_game *game, int *image, int x, int y);
 
-
 /* Map in MLX */
 int		build_map(t_game *game);
 
 /* Player */
-// void	put_player(t_game *game, int x, int y);
 void	put_player(t_game *game);
 void	calc_line_fov(t_game *game);
 
@@ -156,9 +156,6 @@ void	exit_game(t_game *game);
 /* Render Game */
 int		render_game(t_game *game);
 
-
-// Draw
-// void	calc_fov_line_distance(t_game *game, t_fov_line *l);
 void	calc_fov_line_distance(t_game *game, int fov_id);
 void	draw_box(t_game *game, int fov_id, int line_length);
 int		draw_background(t_game *game);

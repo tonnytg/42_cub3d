@@ -21,12 +21,18 @@ double	ft_abs(double number)
 
 void	put_player(t_game *game)
 {
-	for (int index = 0; index < FOV; index++)
+	int	index;
+
+	index = 0;
+	while (index < FOV)
 	{
 		game->player->line[index].line_length = 0;
 		game->player->line[index].beg.x = game->player->x;
 		game->player->line[index].beg.y = game->player->y;
-		game->player->line[index].end.x = game->player->x + 10 * cos(game->player->angle * (M_PI / 180.0));
-		game->player->line[index].end.y = game->player->y + 10 * sin(game->player->angle * (M_PI / 180.0));
+		game->player->line[index].end.x = game->player->x + 10 * \
+			cos(game->player->angle * (M_PI / 180.0));
+		game->player->line[index].end.y = game->player->y + 10 * \
+			sin(game->player->angle * (M_PI / 180.0));
+		index++;
 	}
 }
