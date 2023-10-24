@@ -20,6 +20,35 @@ void	draw_box(t_game *game, int fov_id, int line_length)
 	int	start_y;
 	int	end_x;
 
+	// Baseado no wall_side, escolha a textura correta
+	int texture_color = 0;
+	switch(game->player->line[fov_id].wall_side) {
+		case 'N':
+			// Pegue a cor da textura do lado Norte aqui
+			// azul
+			printf("N\n");
+			texture_color = 0x0000FF;
+			break;
+		case 'S':
+			// Pegue a cor da textura do lado Sul aqui
+			// vermelho
+			printf("S\n");
+			texture_color = 0xFF0000;
+			break;
+		case 'E':
+			printf("E\n");
+			// Pegue a cor da textura do lado Leste aqui
+			// azul claro
+			texture_color = 0x00FFFF;
+			break;
+		case 'W':
+			printf("W\n");
+			// Pegue a cor da textura do lado Oeste aqui
+			// vermelho claro
+			texture_color = 0xFF00FF;
+			break;
+	}
+
 	x = fov_id * (game->engine->width / FOV);
 	if (line_length == 0)
 		corrected_height = game->engine->height / 1;
@@ -32,8 +61,7 @@ void	draw_box(t_game *game, int fov_id, int line_length)
 		y = start_y;
 		while (y < (start_y + corrected_height))
 		{
-			mlx_pixel_put(game->engine->mlx, game->engine->window, x, y,
-				0x000FF);
+			mlx_pixel_put(game->engine->mlx, game->engine->window, x, y, texture_color);
 			y++;
 		}
 		x++;

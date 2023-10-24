@@ -37,6 +37,7 @@ typedef struct s_fov_line
 	int		err;
 	int		e2;
 	int		color;
+	char	wall_side; // 'N', 'S', 'E', or 'W'
 }	t_fov_line;
 
 typedef struct s_player

@@ -57,9 +57,11 @@ void	set_value_to_draw_line(t_fov_line *l)
 	l->e2 = 0;
 }
 
+// calcula a distancia do raio até colidir com alguma parede
 void calc_fov_line_distance(t_game *game, int fov_id)
 {
 	t_fov_line *l;
+	char wall_side;
 
 	l = &game->player->line[fov_id];
 	set_value_to_draw_line(l);
@@ -67,20 +69,26 @@ void calc_fov_line_distance(t_game *game, int fov_id)
 	{
 		int map_x = l->beg.x / TILE_SIZE;
 		int map_y = l->beg.y / TILE_SIZE;
-		if (map_x >= 0 && map_x < game->map->columns && map_y >= 0
-			&& map_y < game->map->lines && game->map->grid[map_y][map_x] == '1')
-		{
-			break;
-		}
 		l->line_length++;
 		l->e2 = l->err;
 		if (l->e2 > -l->dist.x) {
 			l->err -= l->dist.y;
 			l->beg.x += l->step.x;
+
+			wall_side = (l->step.x > 0) ? 'E' : 'W';
 		}
 		if (l->e2 < l->dist.y) {
 			l->err += l->dist.x;
 			l->beg.y += l->step.y;
+
+			wall_side = (l->step.y > 0) ? 'S' : 'N';
 		}
+		if (map_x >= 0 && map_x < game->map->columns && map_y >= 0
+			&& map_y < game->map->lines && game->map->grid[map_y][map_x] == '1')
+		{
+			// interrompe o raio se houver colisão
+			l->wall_side = wall_side;
+			break;
+		}		
 	}
 }
