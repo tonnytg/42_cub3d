@@ -26,23 +26,19 @@ void	draw_box(t_game *game, int fov_id, int line_length)
 		case 'N':
 			// Pegue a cor da textura do lado Norte aqui
 			// azul
-			printf("N\n");
 			texture_color = 0x0000FF;
 			break;
 		case 'S':
 			// Pegue a cor da textura do lado Sul aqui
 			// vermelho
-			printf("S\n");
 			texture_color = 0xFF0000;
 			break;
 		case 'E':
-			printf("E\n");
 			// Pegue a cor da textura do lado Leste aqui
 			// azul claro
 			texture_color = 0x00FFFF;
 			break;
 		case 'W':
-			printf("W\n");
 			// Pegue a cor da textura do lado Oeste aqui
 			// vermelho claro
 			texture_color = 0xFF00FF;
