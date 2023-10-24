@@ -19,29 +19,22 @@ void	draw_box(t_game *game, int fov_id, int line_length)
 	int	corrected_height;
 	int	start_y;
 	int	end_x;
+	int	texture_x, texture_y;
+	char *texture_addr = NULL;
 
 	// Baseado no wall_side, escolha a textura correta
-	int texture_color = 0;
 	switch(game->player->line[fov_id].wall_side) {
 		case 'N':
-			// Pegue a cor da textura do lado Norte aqui
-			// azul
-			texture_color = 0x0000FF;
+			texture_addr = game->images->wall_no_addr;
 			break;
 		case 'S':
-			// Pegue a cor da textura do lado Sul aqui
-			// vermelho
-			texture_color = 0xFF0000;
+			texture_addr = game->images->wall_so_addr;
 			break;
 		case 'E':
-			// Pegue a cor da textura do lado Leste aqui
-			// azul claro
-			texture_color = 0x00FFFF;
+			texture_addr = game->images->wall_ea_addr;
 			break;
 		case 'W':
-			// Pegue a cor da textura do lado Oeste aqui
-			// vermelho claro
-			texture_color = 0xFF00FF;
+			texture_addr = game->images->wall_we_addr;
 			break;
 	}
 
@@ -50,6 +43,7 @@ void	draw_box(t_game *game, int fov_id, int line_length)
 		corrected_height = game->engine->height / 1;
 	else
 		corrected_height = game->engine->height / line_length;
+
 	start_y = (game->engine->height / 2) - (corrected_height / 2);
 	end_x = x + (game->engine->width / FOV);
 	while (x < end_x)
@@ -57,9 +51,17 @@ void	draw_box(t_game *game, int fov_id, int line_length)
 		y = start_y;
 		while (y < (start_y + corrected_height))
 		{
-			mlx_pixel_put(game->engine->mlx, game->engine->window, x, y, texture_color);
+			texture_x = (x % game->images->width);
+			texture_y = ((y - start_y) * game->images->height) / corrected_height;
+			
+			int texture_pixel = *(int *)(texture_addr + 
+									(texture_y * game->images->wall_no_line_len) + 
+									(texture_x * (game->images->wall_no_bpp / 8)));
+			
+			mlx_pixel_put(game->engine->mlx, game->engine->window, x, y, texture_pixel);
 			y++;
 		}
 		x++;
 	}
 }
+

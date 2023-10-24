@@ -57,6 +57,8 @@ typedef struct s_data
 
 typedef struct s_images
 {
+	void	*wall_2d;
+	char	*wall_2d_path;
 	void	*wall_no;
 	char	*wall_no_path;
     char    *wall_no_addr;  // Novo

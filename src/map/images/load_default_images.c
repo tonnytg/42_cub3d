@@ -14,6 +14,7 @@
 
 int	load_default_images(t_game *game)
 {
+	game->images->wall_2d_path = ft_strdup("./assets/sprites/wall_2d.xpm");
 	game->images->wall_no_path = ft_strdup("./assets/sprites/wall_no.xpm");
 	game->images->wall_so_path = ft_strdup("./assets/sprites/wall_so.xpm");
 	game->images->wall_we_path = ft_strdup("./assets/sprites/wall_we.xpm");
