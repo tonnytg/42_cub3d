@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   background.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 16:28:03 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/22 13:56:45 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/28 10:21:56 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,65 +22,60 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 int	draw_floor(t_game *game)
 {
-	t_game_background	*b;
+	int	x;
+	int	y;
 
-	b = game->map->background;
-	b->top_half_height = game->engine->height / 2;
-	b->floor.img = mlx_new_image(game->engine->mlx, game->engine->width,
-			b->top_half_height);
-	b->floor.addr = mlx_get_data_addr(b->floor.img, &b->floor.bits_per_pixel,
-			&b->floor.line_length, &b->floor.endian);
-	b->y = 0;
-	while (b->y < b->top_half_height)
+	game->floor.img = mlx_new_image(game->mlx, WIDTH,
+			HEIGHT / 2);
+	game->floor.addr = mlx_get_data_addr(game->floor.img, &game->floor.bits_per_pixel,
+			&game->floor.line_length, &game->floor.endian);
+	y = 0;
+	while (y < HEIGHT / 2)
 	{
-		b->x = 0;
-		while (b->x < game->engine->width)
+		x = 0;
+		while (x < WIDTH)
 		{
-			my_mlx_pixel_put(&b->floor, b->x, b->y, game->images->sky_color);
-			b->x++;
+			my_mlx_pixel_put(&game->floor, x, y, game->images->sky_color);
+			x++;
 		}
-		b->y++;
+		y++;
 	}
-	mlx_put_image_to_window(game->engine->mlx, game->engine->window,
-		b->floor.img, 0, 0);
 	return (0);
 }
 
 int	draw_sky(t_game *game)
 {
-	t_game_background	*b;
+	int	x;
+	int	y;
 
-	b = game->map->background;
-	b->bottom_half_height = game->engine->height - b->top_half_height;
-	b->sky.img = mlx_new_image(game->engine->mlx, game->engine->width,
-			b->bottom_half_height);
-	b->sky.addr = mlx_get_data_addr(b->sky.img, &b->sky.bits_per_pixel,
-			&b->sky.line_length, &b->sky.endian);
-	b->y = b->top_half_height;
-	while (b->y < game->engine->height)
+	game->sky.img = mlx_new_image(game->mlx, WIDTH,
+			HEIGHT - (HEIGHT / 2));
+	game->sky.addr = mlx_get_data_addr(game->sky.img, &game->sky.bits_per_pixel,
+			&game->sky.line_length, &game->sky.endian);
+	y = (HEIGHT / 2);
+	while (y < HEIGHT)
 	{
-		b->x = 0;
-		while (b->x < game->engine->width)
+		x = 0;
+		while (x < WIDTH)
 		{
-			my_mlx_pixel_put(&b->sky, b->x, b->y - b->top_half_height,
+			my_mlx_pixel_put(&game->sky, x, y - (HEIGHT / 2),
 				game->images->floor_color);
-			b->x++;
+			x++;
 		}
-		b->y++;
+		y++;
 	}
-	mlx_put_image_to_window(game->engine->mlx, game->engine->window,
-		b->sky.img, 0, b->top_half_height);
 	return (0);
 }
 
 int	draw_background(t_game *game)
 {
-	t_game_background	*b;
-
-	b = game->map->background;
-	draw_floor(game);
-	draw_sky(game);
-	mlx_destroy_image(game->engine->mlx, b->floor.img);
-	mlx_destroy_image(game->engine->mlx, b->sky.img);
+	if (!game->floor.img)
+		draw_floor(game);
+	mlx_put_image_to_window(game->mlx, game->window,
+		game->floor.img, 0, 0);
+	if (!game->sky.img)
+		draw_sky(game);
+	mlx_put_image_to_window(game->mlx, game->window,
+		game->sky.img, 0, HEIGHT / 2);
 	return (0);
 }

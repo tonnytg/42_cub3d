@@ -16,9 +16,7 @@ SRC	=	src/main.c								\
 		src/engine/2D/images/put_image.c		\
 		src/engine/3D/draw.c					\
 		src/engine/3D/raycast/fov.c				\
-		src/engine/3D/dda/dda.c					\
 		src/engine/background.c					\
-		src/engine/3D/raycast/raycast.c			\
 		src/engine/render/render.c				\
 		src/map/images/load_default_images.c 	\
 		src/map/images/load_custom_images.c 	\
@@ -36,7 +34,7 @@ OBJ	=	$(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 HEADERS =	includes/$(NAME).h \
 			includes/player.h \
 			libs/libft/libft.h \
-			/usr/mlx_linux/mlx.h
+			mlx_linux/mlx.h
 
 CC	= gcc
 CC_ARGS = -Wextra -Wall -Werror -g3
@@ -45,7 +43,7 @@ all: $(LIBS) $(NAME)
 
 $(NAME): $(OBJ)
 
-	$(CC) $(CC_ARGS) -o $(NAME) $(OBJ) -L $(LIBS) -L /usr/mlx -lft -lXext -lX11 -lm -lz -lmlx $(HEAD_DIR:%=-I%/)
+	$(CC) $(CC_ARGS) -o $(NAME) $(OBJ) -L $(LIBS) -L mlx_linux -lft -lXext -lX11 -lm -lz -lmlx $(HEAD_DIR:%=-I%/)
 	ar rsc $(LIBS)/libft.a $(OBJ)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS)

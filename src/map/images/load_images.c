@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 16:45:12 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/27 21:27:35 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/28 09:56:31 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,19 @@ int	load_address_pixel_img(t_game *game)
 // carrega o arquivo em imagem e salva na struct
 int	load_images(t_game *game)
 {
-	game->images->wall_2d = mlx_xpm_file_to_image(game->engine->mlx,
+	game->images->wall_2d = mlx_xpm_file_to_image(game->mlx,
 			game->images->wall_2d_path,
 			&game->images->width, &game->images->height);
-	game->images->wall_no = mlx_xpm_file_to_image(game->engine->mlx,
+	game->images->wall_no = mlx_xpm_file_to_image(game->mlx,
 			game->images->wall_no_path,
 			&game->images->width, &game->images->height);
-	game->images->wall_so = mlx_xpm_file_to_image(game->engine->mlx,
+	game->images->wall_so = mlx_xpm_file_to_image(game->mlx,
 			game->images->wall_so_path,
 			&game->images->width, &game->images->height);
-	game->images->wall_we = mlx_xpm_file_to_image(game->engine->mlx,
+	game->images->wall_we = mlx_xpm_file_to_image(game->mlx,
 			game->images->wall_we_path,
 			&game->images->width, &game->images->height);
-	game->images->wall_ea = mlx_xpm_file_to_image(game->engine->mlx,
+	game->images->wall_ea = mlx_xpm_file_to_image(game->mlx,
 			game->images->wall_ea_path,
 			&game->images->width, &game->images->height);
 	if (!game->images->wall_no

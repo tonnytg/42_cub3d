@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:38:30 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/22 14:06:09 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/28 09:56:31 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 void	exit_game(t_game *game)
 {
 	destroy_images(game);
-	mlx_destroy_window(game->engine->mlx, game->engine->window);
-	mlx_destroy_display(game->engine->mlx);
-	if (game->engine->mlx)
-		free(game->engine->mlx);
+	mlx_destroy_window(game->mlx, game->window);
+	mlx_destroy_display(game->mlx);
+	if (game->mlx)
+		free(game->mlx);
 	clean_struct(game);
 	exit (0);
 }

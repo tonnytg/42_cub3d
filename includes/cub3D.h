@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/27 21:15:59 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/28 10:22:51 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,30 +83,11 @@ typedef struct s_images
 	int		wall_ea_bpp;
 	int		wall_ea_line_len;
 	int		wall_ea_endian;
-	void	*player;
 	int		floor_color;
 	int		sky_color;
 	int		width;
 	int		height;
 }	t_images;
-
-typedef struct s_engine
-{
-	void	*mlx;
-	void	*window;
-	int		width;
-	int		height;
-}	t_engine;
-
-typedef struct s_game_background
-{
-	int		x;
-	int		y;
-	int		bottom_half_height;
-	int		top_half_height;
-	t_data	floor;
-	t_data	sky;
-}	t_game_background;
 
 typedef struct s_map
 {
@@ -114,15 +95,17 @@ typedef struct s_map
 	int					fd;
 	int					lines;
 	int					columns;
-	t_game_background	*background;
 }	t_map;
 
 typedef struct s_game
 {
 	t_map		*map;
-	t_engine	*engine;
+	void		*mlx;
+	void		*window;
 	t_images	*images;
 	t_player	*player;
+	t_data		floor;
+	t_data		sky;
 }	t_game;
 
 /* Libs */

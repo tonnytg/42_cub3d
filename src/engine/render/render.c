@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:29:54 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/27 22:01:40 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/28 09:56:31 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	draw_circle(t_game *game, int x, int y, int r, int color)
 		{
 			if ((i - x) * (i - x) + (j - y) * (j - y) < r * r)
 				mlx_pixel_put(
-					game->engine->mlx, game->engine->window, i, j, color);
+					game->mlx, game->window, i, j, color);
 		}
 	}
 }
@@ -38,7 +38,7 @@ void	draw_line(t_game *game, int x0, int y0, int x1, int y1, int color)
 
 	while (1)
 	{
-		mlx_pixel_put(game->engine->mlx, game->engine->window, x0, y0, color);
+		mlx_pixel_put(game->mlx, game->window, x0, y0, color);
 		if (x0 == x1 && y0 == y1)
 			break ;
 		e2 = err;

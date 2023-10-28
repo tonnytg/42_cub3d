@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:54:42 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/18 20:34:24 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/28 10:22:31 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 void	destroy_images(t_game *game)
 {
-	mlx_destroy_image(game->engine->mlx, game->images->wall_no);
-	mlx_destroy_image(game->engine->mlx, game->images->wall_so);
-	mlx_destroy_image(game->engine->mlx, game->images->wall_we);
-	mlx_destroy_image(game->engine->mlx, game->images->wall_ea);
+	mlx_destroy_image(game->mlx, game->images->wall_no);
+	mlx_destroy_image(game->mlx, game->images->wall_so);
+	mlx_destroy_image(game->mlx, game->images->wall_we);
+	mlx_destroy_image(game->mlx, game->images->wall_ea);
+	mlx_destroy_image(game->mlx, game->floor.img);
+	mlx_destroy_image(game->mlx, game->sky.img);
 }
 
 void	clean_images_path(t_game *game)
@@ -51,10 +53,7 @@ int	clean_struct(t_game *game)
 	if (game->player)
 		free(game->player);
 	free_table(game->map->grid);
-	free(game->map->background);
 	free(game->map);
-	if (game->engine)
-		free(game->engine);
 	if (game)
 		free(game);
 	return (0);

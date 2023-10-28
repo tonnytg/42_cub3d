@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 20:06:54 by lbiasuz           #+#    #+#             */
-/*   Updated: 2023/10/27 21:47:11 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/28 09:56:31 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ void	draw_box(t_game *game, int fov_id, int line_length)
 		texture_addr = game->images->wall_ea_addr;
 	else if (game->player->line[fov_id].wall_side == 'W')
 		texture_addr = game->images->wall_we_addr;
-	x = fov_id * (game->engine->width / FOV);
-	corrected_height = game->engine->height / line_length;
+	x = fov_id * (WIDTH / FOV);
+	corrected_height = HEIGHT / line_length;
 	if (line_length == 0)
-		corrected_height = game->engine->height / 1;
-	start_y = (game->engine->height / 2) - (corrected_height / 2);
-	end_x = x + (game->engine->width / FOV);
+		corrected_height = HEIGHT / 1;
+	start_y = (HEIGHT / 2) - (corrected_height / 2);
+	end_x = x + (WIDTH / FOV);
 	while (x < end_x)
 	{
 		y = start_y;
@@ -51,7 +51,7 @@ void	draw_box(t_game *game, int fov_id, int line_length)
 					+ (texture_y * game->images->wall_no_line_len)
 					+ (texture_x * (game->images->wall_no_bpp / 8)));
 			mlx_pixel_put(
-				game->engine->mlx, game->engine->window, x, y, texture_pixel);
+				game->mlx, game->window, x, y, texture_pixel);
 			y++;
 		}
 		x++;
