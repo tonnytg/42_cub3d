@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/22 00:23:09 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/27 21:15:59 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@
 # define TILE_SIZE 8
 # define TILE_DP 6
 
-# define WIDTH 1024
-# define HEIGHT 720
+# define WIDTH 640
+# define HEIGHT 480
 
 # define DEFAULT_SKY_COLOR 0xADD8E6
 # define DEFAULT_FLOOR_COLOR 0x808080
@@ -61,28 +61,28 @@ typedef struct s_images
 	char	*wall_2d_path;
 	void	*wall_no;
 	char	*wall_no_path;
-    char    *wall_no_addr;  // Novo
-    int     wall_no_bpp;    // Novo
-    int     wall_no_line_len; // Novo
-    int     wall_no_endian;   // Novo	
+	char	*wall_no_addr;
+	int		wall_no_bpp;
+	int		wall_no_line_len;
+	int		wall_no_endian;
 	void	*wall_so;
 	char	*wall_so_path;
-    char    *wall_so_addr;  // Novo
-    int     wall_so_bpp;    // Novo
-    int     wall_so_line_len; // Novo
-    int     wall_so_endian;   // Novo	
+	char	*wall_so_addr;
+	int		wall_so_bpp;
+	int		wall_so_line_len;
+	int		wall_so_endian;
 	void	*wall_we;
 	char	*wall_we_path;
-    char    *wall_we_addr;  // Novo
-    int     wall_we_bpp;    // Novo
-    int     wall_we_line_len; // Novo
-    int     wall_we_endian;   // Novo	
+	char	*wall_we_addr;
+	int		wall_we_bpp;
+	int		wall_we_line_len;
+	int		wall_we_endian;
 	void	*wall_ea;
 	char	*wall_ea_path;
-    char    *wall_ea_addr;  // Novo
-    int     wall_ea_bpp;    // Novo
-    int     wall_ea_line_len; // Novo
-    int     wall_ea_endian;   // Novo	
+	char	*wall_ea_addr;
+	int		wall_ea_bpp;
+	int		wall_ea_line_len;
+	int		wall_ea_endian;
 	void	*player;
 	int		floor_color;
 	int		sky_color;
@@ -123,7 +123,6 @@ typedef struct s_game
 	t_engine	*engine;
 	t_images	*images;
 	t_player	*player;
-	int			i;
 }	t_game;
 
 /* Libs */

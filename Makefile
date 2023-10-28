@@ -2,7 +2,7 @@ NAME 	=	cub3D
 
 LIBS	=	libs/libft
 
-HEAD_DIR=	includes libs/libft
+HEAD_DIR=	includes libs/libft mlx_linux
 OBJ_DIR	=	bin
 SRC_DIR	=	src
 
@@ -35,7 +35,8 @@ SRC	=	src/main.c								\
 OBJ	=	$(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 HEADERS =	includes/$(NAME).h \
 			includes/player.h \
-			libs/libft/libft.h
+			libs/libft/libft.h \
+			mlx_linux/mlx.h
 
 CC	= gcc
 CC_ARGS = -Wextra -Wall -Werror -g3
@@ -44,7 +45,7 @@ all: $(LIBS) $(NAME)
 
 $(NAME): $(OBJ)
 
-	$(CC) $(CC_ARGS) -o $(NAME) $(OBJ) -L $(LIBS) -lft -lXext -lX11 -lm -lz -lmlx $(HEAD_DIR:%=-I%/)
+	$(CC) $(CC_ARGS) -o $(NAME) $(OBJ) -L $(LIBS) -L mlx_linux -lft -lXext -lX11 -lm -lz -lmlx $(HEAD_DIR:%=-I%/)
 	ar rsc $(LIBS)/libft.a $(OBJ)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS)

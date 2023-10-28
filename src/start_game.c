@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:53:48 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/21 17:11:15 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/10/27 21:11:33 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ t_game	*start_game(t_game *game)
 			game->engine->height,
 			"cub3D");
 	load_images(game);
-	printf("player x: %d\n", game->player->x);
-	printf("player y: %d\n", game->player->y);
+	printf("player x: %f\n", game->player->x);
+	printf("player y: %f\n", game->player->y);
 	printf("player angle: %f\n", game->player->angle);
 	render_game(game);
 	mlx_expose_hook(game->engine->window, expose_hook, game);
