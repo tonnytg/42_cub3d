@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/28 11:45:37 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/28 16:04:15 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # include <player.h>
 
 # define TILE_SIZE 8
-# define TILE_DP 6
 
 # define WIDTH 640
 # define HEIGHT 480
@@ -35,12 +34,12 @@
 # define DEFAULT_SKY_COLOR 0xADD8E6
 # define DEFAULT_FLOOR_COLOR 0x808080
 
+/* KEY CODES */
 # define ESC 65307
 # define UP 119
 # define DOWN 115 
 # define LEFT 97
 # define RIGHT 100
-
 # define UP2 65362
 # define DOWN2 65364
 # define LEFT2 65361
@@ -60,7 +59,6 @@ typedef struct s_images
 {
 	void	*wall_2d;
 	char	*wall_2d_path;
-
 	t_img	wall_no;
 	t_img	wall_so;
 	t_img	wall_we;
@@ -74,10 +72,10 @@ typedef struct s_images
 
 typedef struct s_map
 {
-	char				**grid;
-	int					fd;
-	int					lines;
-	int					columns;
+	char	**grid;
+	int		fd;
+	int		lines;
+	int		columns;
 }	t_map;
 
 typedef struct s_game
@@ -86,7 +84,7 @@ typedef struct s_game
 	void		*mlx;
 	void		*window;
 	t_images	*images;
-	t_player	*player;
+	t_player	player;
 	t_img		floor;
 	t_img		sky;
 }	t_game;
@@ -105,9 +103,6 @@ int		verify_grid(char **grid);
 double	get_player_angle(char *player_position);
 int		discover_player_position(t_game *game);
 
-/* 2D */
-void	set_value_to_draw_line(t_fov_line *l);
-
 /* Images and Colors*/
 int		load_images(t_game *game);
 int		load_default_images(t_game *game);
@@ -115,13 +110,6 @@ int		load_custom_images(t_game *game, char *line, char *config);
 int		load_default_colors(t_game *game);
 int		load_custom_color(t_game *game, char *line, char *config);
 void	put_image(t_game *game, int *image, int x, int y);
-
-/* Map in MLX */
-int		build_map(t_game *game);
-
-/* Player */
-void	put_player(t_game *game);
-void	calc_line_fov(t_game *game);
 
 /* Core */
 t_game	*load_game(t_game *game, char **argv);
@@ -138,9 +126,12 @@ void	exit_game(t_game *game);
 
 /* Render Game */
 int		render_game(t_game *game);
-
+int		build_map(t_game *game);
+void	put_player(t_game *game);
+void	calc_line_fov(t_game *game);
 void	calc_fov_line_distance(t_game *game, int fov_id);
-void	draw_box(t_game *game, int fov_id, int len);
+void	draw_box(t_game *game, int fov_id, int len, int side);
+void	set_value_to_draw_line(t_fov_line *l);
 int		draw_background(t_game *game);
 
 #endif

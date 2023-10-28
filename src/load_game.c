@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:55:00 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/28 10:22:20 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/28 13:10:45 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	init_game_struct(t_game *game)
 	game->images = ft_calloc(1, sizeof(t_images));
 	load_default_colors(game);
 	load_default_images(game);
-	game->player = ft_calloc(1, sizeof(t_player));
 	game->map = ft_calloc(1, sizeof(t_map));
 	if (game->map == NULL)
 		return (1);

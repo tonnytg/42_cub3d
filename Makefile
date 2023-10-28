@@ -13,7 +13,6 @@ SRC	=	src/main.c								\
 		src/engine/keys.c						\
 		src/engine/2D/player.c					\
 		src/engine/2D/map/build_map.c			\
-		src/engine/2D/images/put_image.c		\
 		src/engine/3D/draw.c					\
 		src/engine/3D/raycast/fov.c				\
 		src/engine/background.c					\

@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:54:42 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/28 11:43:30 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/28 13:10:45 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ int	clean_struct(t_game *game)
 		clean_images_path(game);
 		free(game->images);
 	}
-	if (game->player)
-		free(game->player);
 	free_table(game->map->grid);
 	free(game->map);
 	if (game)

@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 13:34:42 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/16 14:32:17 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/28 13:56:11 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,13 @@ int	build_map(t_game *game)
 		line++;
 	}
 	return (0);
+}
+
+void	put_image(t_game *game, int *image, int x, int y)
+{
+	mlx_put_image_to_window(game->mlx,
+		game->window,
+		image,
+		x * TILE_SIZE,
+		y * TILE_SIZE);
 }

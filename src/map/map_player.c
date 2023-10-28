@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:38:45 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/27 21:28:00 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/28 15:48:22 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ int	discover_player_position(t_game *game)
 			{
 				player_position = ft_calloc(2, 1);
 				player_position[0] = game->map->grid[index][jndex];
-				game->player->angle = get_player_angle(player_position);
-				game->player->x = jndex * TILE_SIZE;
-				game->player->y = index * TILE_SIZE;
+				game->player.angle = get_player_angle(player_position);
+				game->player.x = jndex + 0.5;
+				game->player.y = index + 0.5;
 				free(player_position);
 				return (1);
 			}
