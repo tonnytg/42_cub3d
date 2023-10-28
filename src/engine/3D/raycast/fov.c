@@ -6,23 +6,26 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 01:22:26 by lbiasuz           #+#    #+#             */
-/*   Updated: 2023/10/27 21:16:30 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/27 21:41:25 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-void calc_line_fov(t_game *game) {
-	int fov_id = 0;
-	double start_angle, angle_increment;
-	t_fov_line *l;
+void	calc_line_fov(t_game *game)
+{
+	int			fov_id;
+	double		start_angle;
+	double		angle_increment;
+	t_fov_line	*l;
 
-	start_angle = game->player->angle * (M_PI / 180.0) - (FOV / 2) * (M_PI / 180.0);
+	fov_id = 0;
+	start_angle = game->player->angle * (M_PI / 180.0) - \
+		(FOV / 2) * (M_PI / 180.0);
 	angle_increment = (double) FOV / FOV * (M_PI / 180.0);
-
 	printf("angle_increment: %f \n", angle_increment);
-
-	while(fov_id < FOV) {
+	while (fov_id < FOV)
+	{
 		l = &game->player->line[fov_id];
 		l->angle = start_angle;
 		l->end.x = l->beg.x + FOV_LENGTH * cos(start_angle);
@@ -52,29 +55,33 @@ void	set_value_to_draw_line(t_fov_line *l)
 }
 
 // calcula a distancia do raio até colidir com alguma parede
-void calc_fov_line_distance(t_game *game, int fov_id)
+void	calc_fov_line_distance(t_game *game, int fov_id)
 {
-	t_fov_line *l;
+	t_fov_line	*l;
+	int			map_x;
+	int			map_y;
 
 	l = &game->player->line[fov_id];
 	set_value_to_draw_line(l);
 	while (l->beg.x != l->end.x || l->beg.y != l->end.y)
 	{
 		l->line_length++;
-		if (l->err > -l->dist.x) {
+		if (l->err > -l->dist.x)
+		{
 			l->err -= l->dist.y;
 			l->beg.x += l->step.x;
 			l->wall_side = (l->step.y > 0) ? 'E' : 'W';
 		}
-		if (l->err < l->dist.y) {
+		if (l->err < l->dist.y)
+		{
 			l->err += l->dist.x;
 			l->beg.y += l->step.y;
 			l->wall_side = (l->step.x > 0) ? 'S' : 'N';
 		}
-		int map_x = l->beg.x / TILE_SIZE;
-		int map_y = l->beg.y / TILE_SIZE;
+		map_x = l->beg.x / TILE_SIZE;
+		map_y = l->beg.y / TILE_SIZE;
 		if (map_x >= 0 && map_x < game->map->columns && map_y >= 0
 			&& map_y < game->map->lines && game->map->grid[map_y][map_x] == '1')
-			break;
+			break ;
 	}
 }

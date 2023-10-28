@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 15:16:27 by lbiasuz           #+#    #+#             */
-/*   Updated: 2023/10/27 21:12:23 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/27 21:24:12 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ typedef struct s_fov_line
 
 typedef struct s_player
 {
-	t_fov_line		line[FOV];
-	float				x;
-	float				y;
-	float			angle;
+	t_fov_line	line[FOV];
+	float		x;
+	float		y;
+	float		angle;
 }	t_player;
 
 #endif
