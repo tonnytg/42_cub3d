@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:29:54 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/28 09:56:31 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/28 11:38:41 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	render_game(t_game *game)
 	while (fov_id < FOV)
 	{
 		calc_fov_line_distance(game, fov_id);
-		draw_box(game, fov_id, game->player->line[fov_id].line_length / 3);
+		draw_box(game, fov_id, game->player->line[fov_id].len / 3);
 		fov_id++;
 	}
 	return (0);

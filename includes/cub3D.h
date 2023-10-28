@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/28 10:22:51 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/28 11:45:37 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,47 +46,30 @@
 # define LEFT2 65361
 # define RIGHT2 65363
 
-typedef struct s_data
+typedef struct s_img
 {
 	void	*img;
+	char	*path;
 	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
+	int		bpp;
+	int		len;
 	int		endian;
-}	t_data;
+}	t_img;
 
 typedef struct s_images
 {
 	void	*wall_2d;
 	char	*wall_2d_path;
-	void	*wall_no;
-	char	*wall_no_path;
-	char	*wall_no_addr;
-	int		wall_no_bpp;
-	int		wall_no_line_len;
-	int		wall_no_endian;
-	void	*wall_so;
-	char	*wall_so_path;
-	char	*wall_so_addr;
-	int		wall_so_bpp;
-	int		wall_so_line_len;
-	int		wall_so_endian;
-	void	*wall_we;
-	char	*wall_we_path;
-	char	*wall_we_addr;
-	int		wall_we_bpp;
-	int		wall_we_line_len;
-	int		wall_we_endian;
-	void	*wall_ea;
-	char	*wall_ea_path;
-	char	*wall_ea_addr;
-	int		wall_ea_bpp;
-	int		wall_ea_line_len;
-	int		wall_ea_endian;
+
+	t_img	wall_no;
+	t_img	wall_so;
+	t_img	wall_we;
+	t_img	wall_ea;
 	int		floor_color;
 	int		sky_color;
 	int		width;
 	int		height;
+
 }	t_images;
 
 typedef struct s_map
@@ -104,8 +87,8 @@ typedef struct s_game
 	void		*window;
 	t_images	*images;
 	t_player	*player;
-	t_data		floor;
-	t_data		sky;
+	t_img		floor;
+	t_img		sky;
 }	t_game;
 
 /* Libs */
@@ -157,7 +140,7 @@ void	exit_game(t_game *game);
 int		render_game(t_game *game);
 
 void	calc_fov_line_distance(t_game *game, int fov_id);
-void	draw_box(t_game *game, int fov_id, int line_length);
+void	draw_box(t_game *game, int fov_id, int len);
 int		draw_background(t_game *game);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 01:22:26 by lbiasuz           #+#    #+#             */
-/*   Updated: 2023/10/27 21:41:25 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/28 11:38:41 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	calc_fov_line_distance(t_game *game, int fov_id)
 	set_value_to_draw_line(l);
 	while (l->beg.x != l->end.x || l->beg.y != l->end.y)
 	{
-		l->line_length++;
+		l->len++;
 		if (l->err > -l->dist.x)
 		{
 			l->err -= l->dist.y;

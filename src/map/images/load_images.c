@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 16:45:12 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/28 09:56:31 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/28 11:51:51 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 // converte a imagem já salva dentro do mlx em um array de pixels
 int	load_address_pixel_img(t_game *game)
 {
-	game->images->wall_no_addr = mlx_get_data_addr(game->images->wall_no,
-			&game->images->wall_no_bpp, &game->images->wall_no_line_len,
-			&game->images->wall_no_endian
+	game->images->wall_no.addr = mlx_get_data_addr(game->images->wall_no.img,
+			&game->images->wall_no.bpp, &game->images->wall_no.len,
+			&game->images->wall_no.endian
 			);
-	game->images->wall_so_addr = mlx_get_data_addr(game->images->wall_so,
-			&game->images->wall_so_bpp, &game->images->wall_so_line_len,
-			&game->images->wall_so_endian
+	game->images->wall_so.addr = mlx_get_data_addr(game->images->wall_so.img,
+			&game->images->wall_so.bpp, &game->images->wall_so.len,
+			&game->images->wall_so.endian
 			);
-	game->images->wall_ea_addr = mlx_get_data_addr(game->images->wall_ea,
-			&game->images->wall_ea_bpp, &game->images->wall_ea_line_len,
-			&game->images->wall_ea_endian
+	game->images->wall_ea.addr = mlx_get_data_addr(game->images->wall_ea.img,
+			&game->images->wall_ea.bpp, &game->images->wall_ea.len,
+			&game->images->wall_ea.endian
 			);
-	game->images->wall_we_addr = mlx_get_data_addr(game->images->wall_we,
-			&game->images->wall_we_bpp, &game->images->wall_we_line_len,
-			&game->images->wall_we_endian
+	game->images->wall_we.addr = mlx_get_data_addr(game->images->wall_we.img,
+			&game->images->wall_we.bpp, &game->images->wall_we.len,
+			&game->images->wall_we.endian
 			);
 	return (0);
 }
@@ -40,22 +40,22 @@ int	load_images(t_game *game)
 	game->images->wall_2d = mlx_xpm_file_to_image(game->mlx,
 			game->images->wall_2d_path,
 			&game->images->width, &game->images->height);
-	game->images->wall_no = mlx_xpm_file_to_image(game->mlx,
-			game->images->wall_no_path,
+	game->images->wall_no.img = mlx_xpm_file_to_image(game->mlx,
+			game->images->wall_no.path,
 			&game->images->width, &game->images->height);
-	game->images->wall_so = mlx_xpm_file_to_image(game->mlx,
-			game->images->wall_so_path,
+	game->images->wall_so.img = mlx_xpm_file_to_image(game->mlx,
+			game->images->wall_so.path,
 			&game->images->width, &game->images->height);
-	game->images->wall_we = mlx_xpm_file_to_image(game->mlx,
-			game->images->wall_we_path,
+	game->images->wall_we.img = mlx_xpm_file_to_image(game->mlx,
+			game->images->wall_we.path,
 			&game->images->width, &game->images->height);
-	game->images->wall_ea = mlx_xpm_file_to_image(game->mlx,
-			game->images->wall_ea_path,
+	game->images->wall_ea.img = mlx_xpm_file_to_image(game->mlx,
+			game->images->wall_ea.path,
 			&game->images->width, &game->images->height);
-	if (!game->images->wall_no
-		|| !game->images->wall_so
-		|| !game->images->wall_we
-		|| !game->images->wall_ea)
+	if (!game->images->wall_no.img
+		|| !game->images->wall_so.img
+		|| !game->images->wall_we.img
+		|| !game->images->wall_ea.img)
 		return (1);
 	load_address_pixel_img(game);
 	return (0);

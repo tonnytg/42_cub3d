@@ -6,17 +6,17 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 16:28:03 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/28 10:21:56 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/28 11:47:41 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	dst = data->addr + (y * data->len + x * (data->bpp / 8));
 	*(unsigned int *)dst = color;
 }
 
@@ -27,8 +27,8 @@ int	draw_floor(t_game *game)
 
 	game->floor.img = mlx_new_image(game->mlx, WIDTH,
 			HEIGHT / 2);
-	game->floor.addr = mlx_get_data_addr(game->floor.img, &game->floor.bits_per_pixel,
-			&game->floor.line_length, &game->floor.endian);
+	game->floor.addr = mlx_get_data_addr(game->floor.img, &game->floor.bpp,
+			&game->floor.len, &game->floor.endian);
 	y = 0;
 	while (y < HEIGHT / 2)
 	{
@@ -50,8 +50,8 @@ int	draw_sky(t_game *game)
 
 	game->sky.img = mlx_new_image(game->mlx, WIDTH,
 			HEIGHT - (HEIGHT / 2));
-	game->sky.addr = mlx_get_data_addr(game->sky.img, &game->sky.bits_per_pixel,
-			&game->sky.line_length, &game->sky.endian);
+	game->sky.addr = mlx_get_data_addr(game->sky.img, &game->sky.bpp,
+			&game->sky.len, &game->sky.endian);
 	y = (HEIGHT / 2);
 	while (y < HEIGHT)
 	{

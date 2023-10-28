@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 16:42:29 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/28 09:56:31 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/28 11:49:21 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int	load_texture_north_wall(t_game *game, char *texture)
 {
 	printf("game: %p\n", game);
 	printf("load texture north: %s\n", texture);
-	if (game->images->wall_no)
-		free(game->images->wall_no);
-	game->images->wall_no = mlx_xpm_file_to_image(game->mlx, texture,
+	if (game->images->wall_no.img)
+		free(game->images->wall_no.img);
+	game->images->wall_no.img = mlx_xpm_file_to_image(game->mlx, texture,
 			&game->images->width, &game->images->height);
 	return (0);
 }
@@ -27,9 +27,9 @@ int	load_texture_south_wall(t_game *game, char *texture)
 {
 	printf("game: %p\n", game);
 	printf("load texture south: %s\n", texture);
-	if (game->images->wall_so)
-		free(game->images->wall_so);
-	game->images->wall_so = mlx_xpm_file_to_image(game->mlx, texture,
+	if (game->images->wall_so.img)
+		free(game->images->wall_so.img);
+	game->images->wall_so.img = mlx_xpm_file_to_image(game->mlx, texture,
 			&game->images->width, &game->images->height);
 	return (0);
 }
@@ -38,9 +38,9 @@ int	load_texture_west_wall(t_game *game, char *texture)
 {
 	printf("game: %p\n", game);
 	printf("load texture west: %s\n", texture);
-	if (game->images->wall_we)
-		free(game->images->wall_we);
-	game->images->wall_we = mlx_xpm_file_to_image(game->mlx, texture,
+	if (game->images->wall_we.img)
+		free(game->images->wall_we.img);
+	game->images->wall_we.img = mlx_xpm_file_to_image(game->mlx, texture,
 			&game->images->width, &game->images->height);
 	return (0);
 }
@@ -49,9 +49,9 @@ int	load_texture_east_wall(t_game *game, char *texture)
 {
 	printf("game: %p\n", game);
 	printf("load texture east: %s\n", texture);
-	if (game->images->wall_ea)
-		free(game->images->wall_ea);
-	game->images->wall_ea = mlx_xpm_file_to_image(game->mlx, texture,
+	if (game->images->wall_ea.img)
+		free(game->images->wall_ea.img);
+	game->images->wall_ea.img = mlx_xpm_file_to_image(game->mlx, texture,
 			&game->images->width, &game->images->height);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 15:16:27 by lbiasuz           #+#    #+#             */
-/*   Updated: 2023/10/27 21:24:12 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/28 11:38:41 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_fov_line
 	t_point	end;
 	t_point	dist;
 	t_point	step;
-	double	line_length;
+	double	len;
 	int		angle;
 	int		err;
 	char	wall_side;

@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 13:35:12 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/23 20:52:48 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/28 11:38:41 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	put_player(t_game *game)
 	index = 0;
 	while (index < FOV)
 	{
-		game->player->line[index].line_length = 0;
+		game->player->line[index].len = 0;
 		game->player->line[index].beg.x = game->player->x;
 		game->player->line[index].beg.y = game->player->y;
 		game->player->line[index].end.x = game->player->x + 10 * \
