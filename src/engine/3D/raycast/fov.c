@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 01:22:26 by lbiasuz           #+#    #+#             */
-/*   Updated: 2023/10/29 09:33:53 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/29 20:40:08 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,16 @@ void	fov_line_distance(t_game *game, t_fov_line *l)
 		{
 			l->side.x += l->dist.x;
 			l->map.x += l->step.x;
-			l->wall_side = 'N';
+			l->wall_side = (('W' * (l->step.x < 0)) + ('E' * (l->step.x > 0)));
 		}
 		else
 		{
 			l->side.y += l->dist.y;
 			l->map.y += l->step.y;
-			l->wall_side = 'S';
+			l->wall_side = (('N' * (l->step.y < 0)) + ('S' * (l->step.y > 0)));
 		}
 	}
-	if (l->wall_side == 'N')
+	if (l->wall_side == 'W' || l->wall_side == 'E')
 		l->len = HEIGHT / (l->side.x - l->dist.x);
 	else
 		l->len = HEIGHT / (l->side.y - l->dist.y);
