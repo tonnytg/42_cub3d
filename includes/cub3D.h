@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/28 16:04:15 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/28 23:52:56 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,13 +125,14 @@ int		clean_struct(t_game *game);
 void	exit_game(t_game *game);
 
 /* Render Game */
-int		render_game(t_game *game);
-int		build_map(t_game *game);
 void	put_player(t_game *game);
-void	calc_line_fov(t_game *game);
-void	calc_fov_line_distance(t_game *game, int fov_id);
-void	draw_box(t_game *game, int fov_id, int len, int side);
-void	set_value_to_draw_line(t_fov_line *l);
+int		render_game(t_game *game);
+void	init_fov_line(t_fov_line *l);
+void	fov_line_distance(t_game *game, t_fov_line *l);
+void	draw_box(t_game *game, int fov_id, int len);
+// void	calc_line_fov(t_game *game);
 int		draw_background(t_game *game);
+void	draw_player(t_game *game);
+int		draw_map(t_game *game);
 
 #endif
