@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 20:06:54 by lbiasuz           #+#    #+#             */
-/*   Updated: 2023/10/29 00:35:28 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/29 09:48:05 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	draw_box(t_game *game, int x, int len)
 	int	corrected_height;
 	int	start_y;
 
+	if (len < 0)
+		len = 0;
 	corrected_height = HEIGHT - (len * (len != 0));
 	start_y = (HEIGHT / 2) - (corrected_height / 2);
 	y = start_y;

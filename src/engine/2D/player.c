@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 13:35:12 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/28 23:53:32 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/29 09:45:57 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	put_player(t_game *game)
 	l->pos.y = game->player.y;
 	l->dir.x = cos(game->player.angle * M_PI / 180.0);
 	l->dir.y = sin(game->player.angle * M_PI / 180.0);
-	l->plane.x = 0.0;
-	l->plane.y = 0.66;
+	l->plane.x = cos((game->player.angle + 90) * M_PI / 180.0);
+	l->plane.y = sin((game->player.angle + 90) * M_PI / 180.0);
 	l->id = 0;
 }

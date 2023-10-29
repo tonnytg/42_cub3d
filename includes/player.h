@@ -6,14 +6,14 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 15:16:27 by lbiasuz           #+#    #+#             */
-/*   Updated: 2023/10/29 00:14:21 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/29 09:41:34 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PLAYER_H
 # define PLAYER_H
 
-# define FOV 90
+# define FOV 60
 # define FOV_LENGTH 550
 # define TURN_SPEED 5
 # define MOVE_SPEED 0.5

@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 01:22:26 by lbiasuz           #+#    #+#             */
-/*   Updated: 2023/10/29 00:06:55 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/29 09:33:53 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	render_game(t_game *game)
 	{
 		init_fov_line(&game->player.line);
 		fov_line_distance(game, &game->player.line);
-		draw_box(game, game->player.line.id, game->player.line.len);
+		draw_box(game, game->player.line.id, HEIGHT - game->player.line.len);
 		game->player.line.id++;
 	}
 	return (0);
