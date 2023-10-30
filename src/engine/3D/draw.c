@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 20:06:54 by lbiasuz           #+#    #+#             */
-/*   Updated: 2023/10/29 09:48:05 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/29 22:12:48 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*texture_addr(t_game *game, int line, int column, int height)
 	return (texture_addr + y + x);
 }
 
-void	draw_box(t_game *game, int x, int len)
+void	draw_fov(t_game *game, int x, int len)
 {
 	int	y;
 	int	corrected_height;

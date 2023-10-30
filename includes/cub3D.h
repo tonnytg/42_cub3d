@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/28 23:52:56 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/29 22:12:49 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 # include <libft.h>
 # include <get_next_line.h>
 # include <player.h>
+
+# define WALL_HITT 1
+# define MINIMAP 1
 
 # define TILE_SIZE 8
 
@@ -129,7 +132,7 @@ void	put_player(t_game *game);
 int		render_game(t_game *game);
 void	init_fov_line(t_fov_line *l);
 void	fov_line_distance(t_game *game, t_fov_line *l);
-void	draw_box(t_game *game, int fov_id, int len);
+void	draw_fov(t_game *game, int fov_id, int len);
 // void	calc_line_fov(t_game *game);
 int		draw_background(t_game *game);
 void	draw_player(t_game *game);
