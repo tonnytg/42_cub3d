@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:54:42 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/28 13:10:45 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/30 12:50:31 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	destroy_images(t_game *game)
 {
+	mlx_destroy_image(game->mlx, game->images->wall_2d);
 	mlx_destroy_image(game->mlx, game->images->wall_no.img);
 	mlx_destroy_image(game->mlx, game->images->wall_so.img);
 	mlx_destroy_image(game->mlx, game->images->wall_we.img);
@@ -24,6 +25,7 @@ void	destroy_images(t_game *game)
 
 void	clean_images_path(t_game *game)
 {
+	free(game->images->wall_2d_path);
 	free(game->images->wall_no.path);
 	free(game->images->wall_so.path);
 	free(game->images->wall_we.path);
