@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 15:16:27 by lbiasuz           #+#    #+#             */
-/*   Updated: 2023/10/29 09:41:34 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/29 23:02:45 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ typedef struct s_point
 	double	x;
 	double	y;
 }	t_point;
+
+typedef struct s_inp
+{
+	int	x;
+	int	y;
+}	t_inp;
 
 typedef struct s_fov_line
 {
