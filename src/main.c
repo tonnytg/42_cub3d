@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:23 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/30 13:13:06 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/30 14:28:28 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	main(int argc, char **argv)
 	if (invalid_map_file(argc, argv))
 		return (1);
 	game = ft_calloc(1, sizeof(t_game));
-	load_game(game, argv);
-	start_game(game);
+	if (load_game(game, argv))
+		start_game(game);
 	finish_game(game);
 	return (0);
 }

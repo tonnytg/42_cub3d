@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:35 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/30 13:17:40 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/30 13:55:18 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ static int	invalid_arguments(int argc, char **argv)
 
 static int	invalid_extension(char **argv)
 {
-	if (sizeof(argv[1]) != 0 && ft_strnstr(argv[1], ".cub", sizeof(argv[1])))
+	int	s;
+
+	s = ft_strlen(argv[1]);
+	if (s != 0 && ft_strnstr(&(argv[1][s - 4]), ".cub", 4))
 		return (0);
 	ft_printf("Error\nwrong file or file extension!\n");
 	return (1);

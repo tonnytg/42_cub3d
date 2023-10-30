@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/30 13:08:41 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/30 14:26:00 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int		count_columns(char *str, int *columns);
 int		open_file(t_game *game, char **argv);
 int		invalid_map_file(int argc, char **argv);
 int		read_map(t_game *game);
-int		verify_grid(char **grid);
+int		invalid_grid(char **grid);
 double	get_player_angle(char *player_position);
 int		discover_player_position(t_game *game);
 

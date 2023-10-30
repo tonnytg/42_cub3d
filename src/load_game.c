@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:55:00 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/28 13:10:45 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/30 14:27:21 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,11 @@ t_game	*load_game(t_game *game, char **argv)
 		printf("Error\ncan't read map inside file or invalid content!\n");
 		return (NULL);
 	}
-	if (!verify_grid(game->map->grid))
+	if (invalid_grid(game->map->grid))
+	{
 		printf("Error\nInvalid Grid\n");
+		return (NULL);
+	}
 	close(game->map->fd);
 	return (game);
 }
