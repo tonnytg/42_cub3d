@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:35 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/30 13:55:18 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/30 14:36:20 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int	invalid_arguments(int argc, char **argv)
 {
-
 	if (argc == 2 && (argv[1] != NULL))
 		return (0);
 	ft_printf("Error\ninvalid_number_of_arguments!\n");

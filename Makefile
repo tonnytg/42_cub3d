@@ -11,23 +11,23 @@ SRC	=	src/main.c								\
 		src/file/file.c							\
 		src/engine/exit.c						\
 		src/engine/keys.c						\
-		src/engine/2D/player.c					\
-		src/engine/2D/map/build_map.c			\
-		src/engine/3D/draw.c					\
-		src/engine/3D/raycast/fov.c				\
+		src/engine/player.c						\
+		src/engine/build_map.c					\
+		src/engine/draw.c						\
+		src/engine/fov.c						\
 		src/engine/background.c					\
-		src/engine/render/render.c				\
-		src/map/images/load_default_images.c 	\
-		src/map/images/load_custom_images.c 	\
+		src/engine/render.c						\
+		src/map/images/load_default_images.c	\
+		src/map/images/load_custom_images.c		\
 		src/map/images/load_images.c 			\
 		src/map/map_player.c					\
 		src/map/color/color.c					\
-		src/load_game.c							\
-		src/finish_game.c						\
 		src/map/map_utils.c						\
 		src/map/map_read.c						\
 		src/map/map_check.c						\
-		src/start_game.c
+		src/load_game.c							\
+		src/start_game.c						\
+		src/finish_game.c						\
 
 OBJ	=	$(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 HEADERS =	includes/$(NAME).h \

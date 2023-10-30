@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 01:22:26 by lbiasuz           #+#    #+#             */
-/*   Updated: 2023/10/29 22:13:28 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/30 14:43:10 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,23 +58,4 @@ void	fov_line_distance(t_game *game, t_fov_line *l)
 		l->len = HEIGHT / (l->side.x - l->dist.x);
 	else
 		l->len = HEIGHT / (l->side.y - l->dist.y);
-}
-
-int	render_game(t_game *game)
-{
-	put_player(game);
-	draw_background(game);
-	while (game->player.line.id < WIDTH)
-	{
-		init_fov_line(&game->player.line);
-		fov_line_distance(game, &game->player.line);
-		draw_fov(game, game->player.line.id, HEIGHT - game->player.line.len);
-		game->player.line.id++;
-	}
-	if (MINIMAP)
-	{
-		draw_player(game);
-		draw_map(game);
-	}
-	return (0);
 }
