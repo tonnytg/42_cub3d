@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/30 14:26:00 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/30 22:12:13 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ typedef struct s_game
 int		decode_rgb(int r, int g, int b);
 
 /* Read Map */
-int		count_columns(char *str, int *columns);
 int		open_file(t_game *game, char **argv);
 int		invalid_map_file(int argc, char **argv);
 int		read_map(t_game *game);

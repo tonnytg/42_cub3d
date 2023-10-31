@@ -6,15 +6,13 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 15:16:27 by lbiasuz           #+#    #+#             */
-/*   Updated: 2023/10/29 23:02:45 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/30 18:34:35 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PLAYER_H
 # define PLAYER_H
 
-# define FOV 60
-# define FOV_LENGTH 550
 # define TURN_SPEED 5
 # define MOVE_SPEED 0.5
 # define PLAYER_SIZE 2
@@ -46,9 +44,7 @@ typedef struct s_fov_line
 	int		id;
 	double	camera;
 	double	len;
-	double	angle;
 	char	wall_side;
-	int		hit;
 }	t_fov_line;
 
 typedef struct s_player
