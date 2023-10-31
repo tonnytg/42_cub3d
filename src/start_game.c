@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:53:48 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/30 12:45:35 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/31 16:53:17 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,9 @@ t_game	*start_game(t_game *game)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		return (NULL);
-	game->window = mlx_new_window(game->mlx,
-			WIDTH,
-			HEIGHT,
-			"cub3D");
-	load_images(game);
+	if (load_images(game))
+		return (NULL);
+	game->window = mlx_new_window(game->mlx, WIDTH, HEIGHT, "cub3D");
 	printf("player x: %f\n", game->player.x);
 	printf("player y: %f\n", game->player.y);
 	printf("player angle: %f\n", game->player.angle);
