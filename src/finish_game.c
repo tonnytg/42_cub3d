@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:54:42 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/31 17:07:46 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/11/01 08:55:03 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,10 @@ int	clean_struct(t_game *game)
 	if (game->window)
 		mlx_destroy_window(game->mlx, game->window);
 	if (game->mlx)
-		{mlx_destroy_display(game->mlx);
-		free(game->mlx);}
+	{
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+	}
 	free_table(game->map->grid);
 	free(game->map);
 	if (game)
