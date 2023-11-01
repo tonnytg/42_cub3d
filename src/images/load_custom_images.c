@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_custom_images.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 16:42:29 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/31 22:49:52 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/11/01 22:24:22 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	load_texture_north_wall(t_game *game, char *texture)
 {
-	printf("load texture north: %s\n", texture);
 	free(game->images->wall_no.path);
 	game->images->wall_no.path = ft_strdup(texture);
 	return (0);
@@ -22,7 +21,6 @@ int	load_texture_north_wall(t_game *game, char *texture)
 
 int	load_texture_south_wall(t_game *game, char *texture)
 {
-	printf("load texture south: %s\n", texture);
 	free(game->images->wall_so.path);
 	game->images->wall_so.path = ft_strdup(texture);
 	return (0);
@@ -30,7 +28,6 @@ int	load_texture_south_wall(t_game *game, char *texture)
 
 int	load_texture_west_wall(t_game *game, char *texture)
 {
-	printf("load texture west: %s\n", texture);
 	free(game->images->wall_we.path);
 	game->images->wall_we.path = ft_strdup(texture);
 	return (0);
@@ -38,7 +35,6 @@ int	load_texture_west_wall(t_game *game, char *texture)
 
 int	load_texture_east_wall(t_game *game, char *texture)
 {
-	printf("load texture east: %s\n", texture);
 	free(game->images->wall_ea.path);
 	game->images->wall_ea.path = ft_strdup(texture);
 	return (0);

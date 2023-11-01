@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 14:19:22 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/22 14:19:23 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/11/01 22:22:01 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	load_custom_color(t_game *game, char *line, char *config)
 
 int	load_default_colors(t_game *game)
 {
-	printf("Loading default colors\n");
 	game->images->floor_color = DEFAULT_FLOOR_COLOR;
 	game->images->sky_color = DEFAULT_SKY_COLOR;
 	return (0);
