@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   load_images.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 16:45:12 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/31 17:21:13 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/11/01 22:28:09 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-// converte a imagem já salva dentro do mlx em um array de pixels
 int	load_address_pixel_img(t_game *game)
 {
 	game->images->wall_no.addr = mlx_get_data_addr(game->images->wall_no.img,
@@ -34,7 +33,6 @@ int	load_address_pixel_img(t_game *game)
 	return (0);
 }
 
-// carrega o arquivo em imagem e salva na struct
 int	load_images(t_game *game)
 {
 	game->images->wall_2d = mlx_xpm_file_to_image(game->mlx,
@@ -57,7 +55,7 @@ int	load_images(t_game *game)
 		|| !game->images->wall_we.img
 		|| !game->images->wall_ea.img)
 	{
-		printf("Error\narquivo de textura não encontrado\n");
+		printf("Error\nfile of texture not found\n");
 		return (1);
 	}
 	load_address_pixel_img(game);
