@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:55:00 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/18 20:26:21 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/11/01 09:05:03 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,8 @@ int	init_game_struct(t_game *game)
 	game->images = ft_calloc(1, sizeof(t_images));
 	load_default_colors(game);
 	load_default_images(game);
-	game->player = ft_calloc(1, sizeof(t_player));
 	game->map = ft_calloc(1, sizeof(t_map));
 	if (game->map == NULL)
-		return (1);
-	game->map->background = ft_calloc(1, sizeof(t_game_background));
-	game->engine = ft_calloc(1, sizeof(t_engine));
-	if (game->engine == NULL)
 		return (1);
 	return (0);
 }
@@ -43,8 +38,11 @@ t_game	*load_game(t_game *game, char **argv)
 		printf("Error\ncan't read map inside file or invalid content!\n");
 		return (NULL);
 	}
-	if (!verify_grid(game->map->grid))
-		printf("Error\nInvalid Grid\n");
+	if (invalid_grid(game->map->grid))
+	{
+		printf("Error\nInvalid config file\n");
+		return (NULL);
+	}
 	close(game->map->fd);
 	return (game);
 }

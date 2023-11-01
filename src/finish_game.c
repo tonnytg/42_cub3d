@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:54:42 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/18 20:34:24 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/11/01 08:55:03 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,25 @@
 
 void	destroy_images(t_game *game)
 {
-	mlx_destroy_image(game->engine->mlx, game->images->wall_no);
-	mlx_destroy_image(game->engine->mlx, game->images->wall_so);
-	mlx_destroy_image(game->engine->mlx, game->images->wall_we);
-	mlx_destroy_image(game->engine->mlx, game->images->wall_ea);
-}
-
-void	clean_images_path(t_game *game)
-{
-	free(game->images->wall_no_path);
-	free(game->images->wall_so_path);
-	free(game->images->wall_we_path);
-	free(game->images->wall_ea_path);
+	if (game->images->wall_2d)
+		mlx_destroy_image(game->mlx, game->images->wall_2d);
+	if (game->images->wall_no.img)
+		mlx_destroy_image(game->mlx, game->images->wall_no.img);
+	if (game->images->wall_so.img)
+		mlx_destroy_image(game->mlx, game->images->wall_so.img);
+	if (game->images->wall_we.img)
+		mlx_destroy_image(game->mlx, game->images->wall_we.img);
+	if (game->images->wall_ea.img)
+		mlx_destroy_image(game->mlx, game->images->wall_ea.img);
+	if (game->floor.img)
+		mlx_destroy_image(game->mlx, game->floor.img);
+	if (game->sky.img)
+		mlx_destroy_image(game->mlx, game->sky.img);
+	free(game->images->wall_2d_path);
+	free(game->images->wall_no.path);
+	free(game->images->wall_so.path);
+	free(game->images->wall_we.path);
+	free(game->images->wall_ea.path);
 }
 
 void	free_table(char **table)
@@ -44,17 +51,16 @@ void	free_table(char **table)
 int	clean_struct(t_game *game)
 {
 	if (game->images)
-	{
-		clean_images_path(game);
 		free(game->images);
+	if (game->window)
+		mlx_destroy_window(game->mlx, game->window);
+	if (game->mlx)
+	{
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
 	}
-	if (game->player)
-		free(game->player);
 	free_table(game->map->grid);
-	free(game->map->background);
 	free(game->map);
-	if (game->engine)
-		free(game->engine);
 	if (game)
 		free(game);
 	return (0);
@@ -62,6 +68,7 @@ int	clean_struct(t_game *game)
 
 t_game	*finish_game(t_game *game)
 {
+	destroy_images(game);
 	clean_struct(game);
 	return (NULL);
 }

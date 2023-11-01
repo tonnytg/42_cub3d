@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 13:35:12 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/23 20:52:48 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/29 09:45:57 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,14 @@
 
 void	put_player(t_game *game)
 {
-	int	index;
+	t_fov_line	*l;
 
-	index = 0;
-	while (index < FOV)
-	{
-		game->player->line[index].line_length = 0;
-		game->player->line[index].beg.x = game->player->x;
-		game->player->line[index].beg.y = game->player->y;
-		game->player->line[index].end.x = game->player->x + 10 * \
-			cos(game->player->angle * (M_PI / 180.0));
-		game->player->line[index].end.y = game->player->y + 10 * \
-			sin(game->player->angle * (M_PI / 180.0));
-		index++;
-	}
+	l = &game->player.line;
+	l->pos.x = game->player.x;
+	l->pos.y = game->player.y;
+	l->dir.x = cos(game->player.angle * M_PI / 180.0);
+	l->dir.y = sin(game->player.angle * M_PI / 180.0);
+	l->plane.x = cos((game->player.angle + 90) * M_PI / 180.0);
+	l->plane.y = sin((game->player.angle + 90) * M_PI / 180.0);
+	l->id = 0;
 }

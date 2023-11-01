@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_image.c                                        :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/14 13:35:20 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/17 01:50:08 by lbiasuz          ###   ########.fr       */
+/*   Created: 2023/10/22 20:29:54 by antthoma          #+#    #+#             */
+/*   Updated: 2023/10/30 14:43:05 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-void	put_image(t_game *game, int *image, int x, int y)
+int	render_game(t_game *game)
 {
-	mlx_put_image_to_window(game->engine->mlx,
-		game->engine->window,
-		image,
-		x * TILE_SIZE,
-		y * TILE_SIZE);
+	put_player(game);
+	draw_background(game);
+	while (game->player.line.id < WIDTH)
+	{
+		init_fov_line(&game->player.line);
+		fov_line_distance(game, &game->player.line);
+		draw_fov(game, game->player.line.id, HEIGHT - game->player.line.len);
+		game->player.line.id++;
+	}
+	if (MINIMAP)
+	{
+		draw_player(game);
+		draw_map(game);
+	}
+	return (0);
 }
