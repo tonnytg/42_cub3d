@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 16:45:12 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/31 16:10:06 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/31 17:21:13 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,10 @@ int	load_images(t_game *game)
 		|| !game->images->wall_so.img
 		|| !game->images->wall_we.img
 		|| !game->images->wall_ea.img)
+	{
+		printf("Error\narquivo de textura não encontrado\n");
 		return (1);
+	}
 	load_address_pixel_img(game);
 	return (0);
 }

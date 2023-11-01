@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 16:42:29 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/31 16:52:39 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/10/31 22:49:52 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	load_custom_images(t_game *game, char *line, char *config)
 	char	**custom_image;
 
 	custom_image = ft_split(line, ' ');
+	custom_image[1][ft_strlen(custom_image[1]) - 1] = 0;
 	if (ft_strncmp(custom_image[0], "NO", 2) == 0)
 		load_texture_north_wall(game, custom_image[1]);
 	else if (ft_strncmp(custom_image[0], "SO", 2) == 0)
