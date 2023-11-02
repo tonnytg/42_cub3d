@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 20:43:19 by lbiasuz           #+#    #+#             */
-/*   Updated: 2023/10/30 14:27:08 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/11/02 12:45:27 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	invalid_node(char **grid, int x, int y)
 	}
 	if (ft_strchr("NESW", grid[y][x]))
 		players++;
-	if (players > 1)
+	if (players != 1)
 		return (1);
 	return (0);
 }
