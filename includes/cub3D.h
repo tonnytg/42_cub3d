@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/11/02 18:01:45 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/11/02 18:19:54 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ typedef struct s_map
 	int		count_custom_color_f;
 	int		count_custom_color_c;
 	int		count_player;
+	int		count_lines_map;
 	int		has_error;
 }	t_map;
 

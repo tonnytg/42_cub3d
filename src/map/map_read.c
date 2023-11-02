@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:38:54 by antthoma          #+#    #+#             */
-/*   Updated: 2023/11/02 15:33:25 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/11/02 18:26:28 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ int	parse_map_file(t_game *game, char *line)
 		full_map = ft_strjoin(full_map, line);
 		free(line);
 		line = get_next_line(game->map->fd);
+		game->map->count_lines_map++;
 		if (temp[0] != 0)
 			free(temp);
 		game->map->lines++;
@@ -104,6 +105,7 @@ int	read_map(t_game *game)
 	char	*line;
 
 	line = get_next_line(game->map->fd);
+	game->map->count_lines_map++;
 	while (line)
 	{
 		if (!ft_strncmp(line, "F ", 2) || !ft_strncmp(line, "C ", 2))
@@ -118,6 +120,7 @@ int	read_map(t_game *game)
 		if (!is_config_line(game, line) && line[0] != '\n')
 			return (parse_map_file(game, line));
 		free(line);
+		game->map->count_lines_map++;
 		line = get_next_line(game->map->fd);
 	}
 	free(line);
