@@ -31,6 +31,7 @@ SRC	=	src/main.c								\
 		src/finish_game.c						\
 
 OBJ	=	$(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
+OBJ_BONUS	=	$(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)_bonus%.o)
 HEADERS =	includes/$(NAME).h \
 			includes/player.h \
 			libs/libft/libft.h
@@ -39,15 +40,24 @@ CC	= gcc
 CC_ARGS = -Wextra -Wall -Werror -g3
 
 all: $(LIBS) $(NAME)
+bonus: $(LIBS) $(NAME)_bonus
 
 $(NAME): $(OBJ)
 
 	$(CC) $(CC_ARGS) -o $(NAME) $(OBJ) -L $(LIBS) -lft -lXext -lX11 -lm -lz -lmlx $(HEAD_DIR:%=-I%/)
 	ar rsc $(LIBS)/libft.a $(OBJ)
 
+$(NAME)_bonus: $(OBJ_BONUS)
+	$(CC) $(CC_ARGS) -o $(NAME)_bonus $(OBJ_BONUS) -L $(LIBS) -lft -lXext -lX11 -lm -lz -lmlx $(HEAD_DIR:%=-I%/)
+	ar rsc $(LIBS)/libft.a $(OBJ_BONUS)	
+
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS)
 	mkdir -p $(@D)
 	$(CC) $(CC_ARGS) -c $< -o $(@:$(SRC_DIR)=$(OBJ_DIR)) $(HEAD_DIR:%=-I%/)
+
+$(OBJ_DIR)_bonus/%.o: $(SRC_DIR)/%.c $(HEADERS)
+	mkdir -p $(@D)
+	$(CC) $(CC_ARGS) -c $< -DMINIMAP=1 -o $(@:$(SRC_DIR)=$(OBJ_DIR)_bonus) $(HEAD_DIR:%=-I%/)	
 
 $(LIBS):
 	make -C $(LIBS)
@@ -55,11 +65,15 @@ $(LIBS):
 clean:
 	make -C $(LIBS) clean
 	rm -f $(OBJ)
+	rm -f $(OBJ_BONUS)
 
 fclean: clean
 	make -C $(LIBS) fclean
 	rm -f $(NAME)
+	rm -rf $(NAME)_bonus
+	rm -rf bin
+	rm -rf bin_bonus
 
 re: fclean all
 
-.PHONY: all clean fclean re $(LIBS)
+.PHONY: all clean fclean re $(LIBS) bonus
