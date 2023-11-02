@@ -1,7 +1,7 @@
-NO ./assets/texture/north_texture.xpm
-SO ./assets/texture/south_texture.xpm
-WE ./assets/texture/west_texture.xpm
-EA ./assets/texture/east_texture.xpm
+NO ./assets/sprites/wall_custom_no.xpm
+SO ./assets/sprites/wall_custom_so.xpm
+WE ./assets/sprites/wall_custom_we.xpm
+EA ./assets/sprites/wall_custom_ea.xpm
 
 C 205,100,0
 F 157,30,0
