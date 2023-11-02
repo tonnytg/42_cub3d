@@ -72,6 +72,7 @@ CC	= gcc
 CC_ARGS = -Wextra -Wall -Werror -g3
 
 all: $(LIBS) $(NAME)
+bonus: $(LIBS) $(NAME)_bonus
 
 $(NAME): $(OBJ)
 
@@ -97,11 +98,15 @@ $(LIBS):
 clean:
 	make -C $(LIBS) clean
 	rm -f $(OBJ)
+	rm -f $(OBJ_BONUS)
 
 fclean: clean
 	make -C $(LIBS) fclean
 	rm -f $(NAME)
+	rm -rf $(NAME)_bonus
+	rm -rf bin
+	rm -rf bin_bonus
 
 re: fclean all
 
-.PHONY: all clean fclean re $(LIBS)
+.PHONY: all clean fclean re $(LIBS) bonus
