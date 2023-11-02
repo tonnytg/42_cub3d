@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/11/02 14:41:20 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/11/02 15:16:38 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ typedef struct s_map
 	int		count_custom_color_f;
 	int		count_custom_color_c;
 	int		count_player;
+	int		has_error;
 }	t_map;
 
 typedef struct s_game
@@ -111,6 +112,7 @@ double	get_player_angle(char *player_position);
 int		discover_player_position(t_game *game);
 void	free_array(char **array);
 int		count_array(char **array);
+int		check_config_has_erros(t_game *game);
 
 /* Images and Colors*/
 int		load_images(t_game *game);
