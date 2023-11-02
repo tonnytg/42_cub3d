@@ -6,11 +6,23 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:54:42 by antthoma          #+#    #+#             */
-/*   Updated: 2023/11/01 20:55:51 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/11/02 05:27:36 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
+
+void	clean_gnl(t_game *game)
+{
+	char	*line;
+
+	line = get_next_line(game->map->fd);
+	while (line != NULL)
+	{
+		free(line);
+		line = get_next_line(game->map->fd);
+	}
+}
 
 void	destroy_images(t_game *game)
 {

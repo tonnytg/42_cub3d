@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_read.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:38:54 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/31 10:42:04 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/11/02 05:26:55 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,15 @@ int	read_map(t_game *game)
 	line = get_next_line(game->map->fd);
 	while (line)
 	{
+		if (!ft_strncmp(line, "F ", 2) || !ft_strncmp(line, "C ", 2))
+		{
+			if (is_invalid_color(line))
+			{
+				free(line);
+				clean_gnl(game);
+				return (1);
+			}
+		}
 		if (!is_config_line(game, line) && line[0] != '\n')
 			return (parse_map_file(game, line));
 		free(line);
