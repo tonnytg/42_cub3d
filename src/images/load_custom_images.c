@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 16:42:29 by antthoma          #+#    #+#             */
-/*   Updated: 2023/11/02 15:27:39 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/11/02 15:32:29 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	load_texture_east_wall(t_game *game, char *texture)
 	return (0);
 }
 
-int	load_custom_images(t_game *game, char *line, char *config)
+int	load_custom_images(t_game *game, char *line)
 {
 	char	**custom_image;
 

@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:38:54 by antthoma          #+#    #+#             */
-/*   Updated: 2023/11/02 05:26:55 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/11/02 15:33:25 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 int	is_config_line(t_game *game, char	*line)
 {
 	if (!ft_strncmp(line, "NO ", 3))
-		load_custom_images(game, line, "NO");
+		load_custom_images(game, line);
 	else if (!ft_strncmp(line, "SO ", 3))
-		load_custom_images(game, line, "SO");
+		load_custom_images(game, line);
 	else if (!ft_strncmp(line, "WE ", 3))
-		load_custom_images(game, line, "WE");
+		load_custom_images(game, line);
 	else if (!ft_strncmp(line, "EA ", 3))
-		load_custom_images(game, line, "EA");
+		load_custom_images(game, line);
 	else if (!ft_strncmp(line, "F ", 2))
 		load_custom_color(game, line, "F");
 	else if (!ft_strncmp(line, "C ", 2))
