@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/11/02 15:16:38 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/11/02 15:32:39 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int		check_config_has_erros(t_game *game);
 /* Images and Colors*/
 int		load_images(t_game *game);
 int		load_default_images(t_game *game);
-int		load_custom_images(t_game *game, char *line, char *config);
+int		load_custom_images(t_game *game, char *line);
 int		load_default_colors(t_game *game);
 int		load_custom_color(t_game *game, char *line, char *config);
 void	put_image(t_game *game, int *image, int x, int y);
