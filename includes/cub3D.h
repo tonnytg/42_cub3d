@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/10/30 22:12:13 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/11/02 05:27:57 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ int		load_custom_images(t_game *game, char *line, char *config);
 int		load_default_colors(t_game *game);
 int		load_custom_color(t_game *game, char *line, char *config);
 void	put_image(t_game *game, int *image, int x, int y);
+int		is_invalid_color(char *line);
 
 /* Core */
 t_game	*load_game(t_game *game, char **argv);
@@ -120,6 +121,7 @@ t_game	*finish_game(t_game *game);
 int		key_press(int keycode, t_game *game);
 
 /* Clean or Exit */
+void	clean_gnl(t_game *game);
 void	destroy_images(t_game *game);
 int		clean_struct(t_game *game);
 void	exit_game(t_game *game);
