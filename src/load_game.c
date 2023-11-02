@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:55:00 by antthoma          #+#    #+#             */
-/*   Updated: 2023/11/02 14:41:36 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/11/02 15:19:03 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ t_game	*load_game(t_game *game, char **argv)
 	if (read_map(game))
 	{
 		printf("Error\ncan't read map inside file or invalid content!\n");
+		return (NULL);
+	}
+	if (check_config_has_erros(game))
+	{
+		printf("Error\ncheck config map file\n");
 		return (NULL);
 	}
 	if (invalid_grid(game, game->map->grid))

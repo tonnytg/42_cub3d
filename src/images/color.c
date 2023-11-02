@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 14:19:22 by antthoma          #+#    #+#             */
-/*   Updated: 2023/11/02 14:33:53 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/11/02 15:24:08 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	load_custom_color(t_game *game, char *line, char *config)
 	int		color;	
 
 	content = ft_split(line, ' ');
+	if (count_array(content) > 2)
+		game->map->has_error++;
 	rgb = ft_split(content[1], ',');
 	free_array(content);
 	color = decode_rgb(ft_atoi(rgb[0]), ft_atoi(rgb[1]), ft_atoi(rgb[2]));

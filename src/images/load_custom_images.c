@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 16:42:29 by antthoma          #+#    #+#             */
-/*   Updated: 2023/11/02 14:23:02 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/11/02 15:27:39 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	load_custom_images(t_game *game, char *line, char *config)
 	custom_image[1][ft_strlen(custom_image[1]) - 1] = 0;
 	if (count_array(custom_image) != 2)
 	{
+		game->map->has_error++;
 		free_array(custom_image);
 		return (1);
 	}
@@ -65,7 +66,6 @@ int	load_custom_images(t_game *game, char *line, char *config)
 		load_texture_east_wall(game, custom_image[1]);
 	else
 	{
-		printf("Error\nNot find texture %s\n", config);
 		free_array(custom_image);
 		return (1);
 	}
