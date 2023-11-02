@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/11/02 17:39:31 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/11/02 18:01:45 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@
 # include <player.h>
 
 # define WALL_HITT 1
-#ifndef MINIMAP
-# define MINIMAP 0
-#endif
+# ifndef MINIMAP
+#  define MINIMAP 0
+# endif
 
 # define TILE_SIZE 8
 
