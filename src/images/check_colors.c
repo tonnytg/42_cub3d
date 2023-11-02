@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 05:06:23 by antthoma          #+#    #+#             */
-/*   Updated: 2023/11/02 05:15:25 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:37:20 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	count_rgb(int i)
 {
 	if (i != 3)
 	{
-		printf("Error\nRGB has more than 3 values\n");
+		printf("Error\nRGB must need 3 values\n");
 		return (1);
 	}
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:55:00 by antthoma          #+#    #+#             */
-/*   Updated: 2023/11/01 09:05:03 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2023/11/02 14:41:36 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_game	*load_game(t_game *game, char **argv)
 		printf("Error\ncan't read map inside file or invalid content!\n");
 		return (NULL);
 	}
-	if (invalid_grid(game->map->grid))
+	if (invalid_grid(game, game->map->grid))
 	{
 		printf("Error\nInvalid config file\n");
 		return (NULL);

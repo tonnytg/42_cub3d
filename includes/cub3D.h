@@ -6,7 +6,7 @@
 /*   By: antthoma <antthoma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 04:49:17 by antthoma          #+#    #+#             */
-/*   Updated: 2023/11/02 05:27:57 by antthoma         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:41:20 by antthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,13 @@ typedef struct s_map
 	int		fd;
 	int		lines;
 	int		columns;
+	int		count_custom_wall_no;
+	int		count_custom_wall_so;
+	int		count_custom_wall_we;
+	int		count_custom_wall_ea;
+	int		count_custom_color_f;
+	int		count_custom_color_c;
+	int		count_player;
 }	t_map;
 
 typedef struct s_game
@@ -99,9 +106,11 @@ int		decode_rgb(int r, int g, int b);
 int		open_file(t_game *game, char **argv);
 int		invalid_map_file(int argc, char **argv);
 int		read_map(t_game *game);
-int		invalid_grid(char **grid);
+int		invalid_grid(t_game *game, char **grid);
 double	get_player_angle(char *player_position);
 int		discover_player_position(t_game *game);
+void	free_array(char **array);
+int		count_array(char **array);
 
 /* Images and Colors*/
 int		load_images(t_game *game);
@@ -132,7 +141,6 @@ int		render_game(t_game *game);
 void	init_fov_line(t_fov_line *l);
 void	fov_line_distance(t_game *game, t_fov_line *l);
 void	draw_fov(t_game *game, int fov_id, int len);
-// void	calc_line_fov(t_game *game);
 int		draw_background(t_game *game);
 void	draw_player(t_game *game);
 int		draw_map(t_game *game);
